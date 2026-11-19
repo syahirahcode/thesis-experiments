@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laporan Image Consulting Makeup</title>
+<style>
+:root{
+  --bg:#faf7f6;--card:#fff;--ink:#2a2325;--mute:#7a6d70;--line:#eadfe0;--accent:#9c3d5a;--soft:#f4e6ea;
+  --r:14px;
+  font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#1b1618;--card:#261f22;--ink:#f3eaec;--mute:#b3a4a8;--line:#3a3034;--accent:#e08aa6;--soft:#33262b}
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);line-height:1.55}
+.wrap{max-width:960px;margin:0 auto;padding:28px 18px 60px}
+header{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+h1{font-size:1.7rem;margin:0;letter-spacing:-.01em}
+h2{font-size:1.15rem;margin:34px 0 4px}
+.sub{color:var(--mute);font-size:.9rem;margin:0 0 14px}
+.btn{background:var(--accent);color:#fff;border:0;border-radius:999px;padding:10px 20px;font-size:.9rem;cursor:pointer}
+.btn:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.grid{display:grid;gap:14px}
+.g3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.photowrap{width:100%;max-width:280px;margin:0 auto;padding:8px}
+.photo{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:10px;background:var(--soft)}
+.ph{display:grid;place-items:center;color:var(--mute);font-size:.85rem;background:var(--soft);border-radius:10px;min-height:120px}
+.label{font-size:.82rem;color:var(--mute);margin:0}
+.big{font-size:1.45rem;font-weight:700;margin:2px 0 8px}
+.conf{height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.conf i{display:block;height:100%;background:var(--accent)}
+.confv{font-size:.8rem;color:var(--mute);margin:4px 0 12px}
+.sample{width:100%;height:120px;object-fit:cover;border-radius:10px}
+.mst{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+.mg{display:flex;flex-direction:column;align-items:center;gap:5px;padding:3px 3px 4px;border:2px solid transparent;border-radius:10px}
+.mg.on{border-color:var(--ink)}
+.mg .pair{display:flex;width:100%;height:38px;border-radius:7px;overflow:hidden}
+.mg .pair span{flex:1}
+.mg small{font-size:.68rem;color:var(--mute)}
+.mg.on small{color:var(--ink);font-weight:600}
+.dot{width:72px;height:72px;border-radius:50%;border:3px solid var(--card);box-shadow:0 0 0 1px var(--line);flex:none}
+.row{display:flex;align-items:center;gap:14px}
+.season-results{display:grid;gap:12px}
+.season-primary{font-size:1.5rem;font-weight:800;line-height:1.2}
+.season-secondary{font-size:.95rem;color:var(--mute)}
+.season-name{display:block;margin-top:3px}
+.season-secondary .season-name{font-weight:600;color:var(--ink)}
+.sw{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.look img,.look .ph{width:100%;height:340px;object-fit:cover;border-radius:10px}
+code{font-family:ui-monospace,Consolas,monospace;font-size:.85rem;color:var(--mute)}
+.pgrid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.prod{display:flex;flex-direction:column;gap:6px;font-size:.85rem}
+.prod .pi{aspect-ratio:1;border-radius:10px;object-fit:cover;width:100%;background:var(--soft)}
+.prod .pn{font-weight:600;line-height:1.3}
+.prod .meta{color:var(--mute)}
+.prod a{color:var(--accent);text-decoration:none}
+.rgs{display:grid;gap:14px}
+.rg h3{font-size:1rem;margin:0 0 4px}
+.rg dl{display:grid;grid-template-columns:150px 1fr;margin:0}
+.rg dt,.rg dd{margin:0;padding:12px 0;border-top:1px solid var(--line)}
+.rg dt{font-weight:600;font-size:.9rem;padding-right:14px}
+.rg dd{font-size:.93rem;max-width:68ch}
+.rg dd.full{grid-column:1/-1}
+.rg dl>:first-child,.rg dl>:nth-child(2){border-top:0}
+.rg dd.full:first-child{border-top:0}
+@media (max-width:560px){
+  .rg dl{grid-template-columns:1fr}
+  .rg dt{padding-bottom:0;border-top:1px solid var(--line)}
+  .rg dd{border-top:0;padding-top:4px}
+  .rg dl>:nth-child(2){border-top:0}
+}
+.cg+.cg{margin-top:16px}
+.cg h3{font-size:.95rem;margin:0 0 8px}
+.trio{display:grid;grid-template-columns:repeat(auto-fit,minmax(70px,1fr));gap:10px}
+.trio .c{height:56px;border-radius:12px;border:1px solid var(--line);margin-bottom:6px}
+.trio .n{font-size:.82rem;font-weight:600;line-height:1.25}
+.trio code{display:block;margin-top:3px;font-size:.72rem}
+footer{margin-top:36px;color:var(--mute);font-size:.8rem}
+@page{size:A4;margin:12mm 12mm 16mm;
+  @bottom-left{content:"Laporan Rekomendasi Makeup";font:9px "Segoe UI",Arial,sans-serif;color:#7a6d70}
+  @bottom-right{content:"Halaman " counter(page) " dari " counter(pages);font:9px "Segoe UI",Arial,sans-serif;color:#7a6d70}}
+@media print{
+  :root:not([data-theme="light"]){--bg:#fff;--card:#fff;--ink:#2a2325;--mute:#7a6d70;--line:#eadfe0;--accent:#9c3d5a;--soft:#f4e6ea}
+  body{background:#fff;color:var(--ink);font-size:13px}
+  .btn{display:none}
+  .wrap{max-width:none;padding:0}
+  .page{break-after:page}
+  .page:last-child{break-after:auto}
+  h2{margin-top:20px;break-after:avoid}
+  header{margin-bottom:8px}
+  .card,.prod,.look,.season-results,.rg{break-inside:avoid}
+  .photowrap{max-width:190px}
+  .g3{grid-template-columns:repeat(3,1fr);gap:10px}
+  .g2{grid-template-columns:.8fr 1.2fr}
+  .look.card{padding:12px}
+  .look img,.look .ph{height:150px}
+  .look .big{font-size:1.15rem;margin-top:8px!important}
+  .sec{break-inside:avoid}
+  .cg{display:grid;grid-template-columns:40px 1fr;gap:8px;align-items:start}
+  .cg+.cg{margin-top:8px}
+  .cg h3{margin:4px 0 0;font-size:.82rem}
+  .trio .c{height:28px;margin-bottom:3px}
+  .trio .n{font-size:.74rem}
+  h2+.sub{margin-bottom:8px}
+  .prod .pi{aspect-ratio:4/3}
+  h3.ph3{margin:14px 0 6px!important}
+  .rgs{gap:6px}
+  .rg.card{padding:10px 14px}
+  .rg h3{font-size:.92rem}
+  .rg dl{grid-template-columns:120px 1fr}
+  .rg dt,.rg dd{padding:4px 0;font-size:.82rem}
+  .rg.card{padding:8px 14px}
+  .pgrid{grid-template-columns:repeat(6,1fr);gap:8px}
+  .prod{font-size:.72rem}
+  .prod.card{padding:6px!important}
+  .note{margin:10px 0 0}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+
+<script>
+/* ============================================================
+   DATA — ganti objek ini dengan JSON dari backend.
+   Semua field gambar boleh kosong (otomatis tampil placeholder).
+   ============================================================ */
+const P=(brand,name,shade,hex,image="",url="")=>({brand,name,shade,hex,image,url});
+let DATA={
+  client:{name:"Nama Klien",date:"22 Oktober 2026"},
+  photo:"",                                   // URL / data:URI foto input
+  saturation:{label:"Muted",confidence:0.87,sample:""},   // sample = foto contoh saturasi
+  skinTone:{label:"Medium",confidence:0.91},   // label = Fair | Medium | Tanned | Deep | Dark (otomatis menandai 2 swatch Monk di grupnya)
+  undertone:{label:"Warm",confidence:0.84,color:"#d9a066"},  // warm / cool / neutral
+  season:{primary:{name:"Soft Autumn",color:"#b0773f"},
+          secondary:{name:"Soft Summer",color:"#8a8fb0"}},
+  look:{name:"Soft Peach Glow",image:"",desc:"Natural, segar, cocok untuk sehari-hari."},  // image dari KB perusahaan
+  colors:{   // 3 warna per kategori
+    eye:[{name:"Soft Peach Shimmer",hex:"#f0c0a8"},{name:"Warm Taupe",hex:"#a47c68"},{name:"Champagne",hex:"#e6cfa8"}],
+    blush:[{name:"Peach Coral",hex:"#e8917a"},{name:"Gentle Pink",hex:"#eba0a8"},{name:"Warm Apricot",hex:"#eba583"}],
+    lip:[{name:"Rosy Nude",hex:"#c4806f"},{name:"Natural Coral",hex:"#e0806a"},{name:"Soft Peach",hex:"#e8a58c"}]
+  },
+  products:{
+    complexion:[P("Brand A","Foundation X","Shade 30 Warm","#d1a27d"),P("Brand B","Cushion Y","N21","#dcb08b"),P("Brand C","Concealer Z","Medium","#cf9f79"),P("Brand D","Loose Powder","Natural","#e2c19f")],
+    lip:[P("Brand A","Velvet Tint","Rosy Nude","#c4806f"),P("Brand B","Lip Cream","Soft Mauve","#b86f6b"),P("Brand C","Lip Balm Tinted","Peach","#e29a85"),P("Brand D","Satin Lipstick","Brick Rose","#a8584f")],
+    eye:[P("Brand A","Eyeshadow Palette","Warm Neutrals","#a47c68"),P("Brand B","Eyeshadow Stick","Taupe","#9a7563"),P("Brand C","Brow Pencil","Soft Brown","#6d4c3d"),P("Brand D","Mascara","Brown Black","#3b2a24")],
+    blush:[P("Brand A","Cream Blush","Peach Coral","#e8917a"),P("Brand B","Powder Blush","Warm Apricot","#eba583"),P("Brand C","Liquid Blush","Soft Rose","#d98a86"),P("Brand D","Blush Stick","Terracotta","#c8745f")]
+  },
+  reasons:[   // grup → butir; tanpa persentase season
+    {title:"Dari atribut kulit ke season",items:[
+      {label:"Atribut yang dipakai",text:"Undertone warm, skin tone medium, dan saturasi muted saling menguatkan: kulit hangat dengan intensitas warna lembut, bukan kontras tinggi."},
+      {label:"Penetapan season",text:"Pola itu paling dekat dengan Soft Autumn sebagai season utama. Soft Summer menjadi pendamping karena sisi lembutnya sama, hanya sedikit lebih sejuk."}]},
+    {title:"Karakteristik season dan arah palet",items:[
+      {label:"Warna yang dipilih",text:"Soft Autumn membutuhkan warna hangat yang kalem. Peach, coral lembut, dan nude hangat menyatu dengan rona kulit sehingga wajah tampak segar."},
+      {label:"Warna yang dihindari",text:"Warna neon terlalu jenuh dan mengalahkan kulit yang muted. Warna pucat atau pastel dingin membuat kulit tampak kusam, dan warna gelap pekat terlalu berat untuk kontras kulit ini."}]},
+    {title:"Makeup yang cocok dengan foto kamu",items:[
+      {label:"Gaya makeup",text:"Soft Peach Glow menjaga hasil tetap natural, sejalan dengan kontras kulit yang rendah."},
+      {label:"Complexion",text:"Shade dipilih dari katalog yang undertone-nya hangat dan selaras dengan kedalaman kulit; finish light–medium agar rona alami tetap terlihat."},
+      {label:"Eye",text:"Peach dan taupe hangat menegaskan mata tanpa kontras keras, karena sama-sama berada di rentang warna season."},
+      {label:"Blush",text:"Peach dan coral memberi rona sehat di pipi, sementara pink yang terlalu dingin akan bertabrakan dengan undertone."},
+      {label:"Lip",text:"Nude-coral hangat membuat bibir tampak sehat dan senada dengan eye dan blush."}]}
+  ]
+};
+/* Opsional: ambil dari backend → DATA = await (await fetch('/api/report/123')).json(); lalu render() */
+
+/* ======================= RENDER ======================= */
+const $=(t,a={},...k)=>{const e=document.createElement(t);
+  for(const[x,v]of Object.entries(a)){if(x==="class")e.className=v;else if(x==="style")e.style.cssText=v;else e.setAttribute(x,v)}
+  k.flat(Infinity).forEach(c=>e.append(c?.nodeType?c:document.createTextNode(c??"")));return e};
+const pct=v=>Math.round(v*100)+"%";
+const img=(src,cls,alt,ph)=>src?$("img",{src,class:cls,alt}):$("div",{class:"ph "+cls},ph||"Foto belum tersedia");
+const conf=v=>[ $("div",{class:"conf"},$("i",{style:`width:${pct(v)}`})), $("p",{class:"confv"},"Confidence "+pct(v)) ];
+const CATS=[["complexion","Complexion"],["lip","Lip"],["eye","Eye"],["blush","Blush"]];
+
+function render(){
+  const d=DATA,app=document.getElementById("app");app.innerHTML="";
+  let cur;const newPage=()=>{cur=$("section",{class:"page"});app.append(cur)};   // satu <section class="page"> = satu halaman PDF
+  newPage();   // halaman 1: foto, analisis kulit, color season
+  cur.append($("header",{},
+    $("div",{},$("h1",{},"Laporan Rekomendasi Makeup"),$("p",{class:"sub"},`${d.client.name} · ${d.client.date}`)),
+    $("button",{class:"btn",onclick:"window.print()"},"Unduh PDF")));
+
+  // 1. Foto input
+  cur.append($("div",{class:"card photowrap"},img(d.photo,"photo","Foto yang dianalisis","Foto input")));
+
+  // 2. Analisis kulit
+  cur.append($("h2",{},"Analisis kulit"),$("p",{class:"sub"},"Hasil teratas dari setiap kategori."));
+  const mst=(d.skinTone.swatches||[]).map(group=>$("div",{class:"mg"+(group.label.toLowerCase()===String(d.skinTone.label).toLowerCase()?" on":"")},
+    $("div",{class:"pair"},group.colors.map(color=>$("span",{style:`background:${color}`}))),$("small",{},group.label)));
+  const undertoneDot=$("div",{class:"dot",style:`background:${d.undertone.color}`});
+  cur.append($("div",{class:"grid g3"},
+    $("div",{class:"card"},$("p",{class:"label"},"Saturasi kulit"),$("p",{class:"big"},d.saturation.label),conf(d.saturation.confidence),img(d.saturation.sample,"sample","Contoh saturasi "+d.saturation.label,"Contoh foto saturasi")),
+    $("div",{class:"card"},$("p",{class:"label"},"Skin tone"),$("p",{class:"big"},d.skinTone.label),conf(d.skinTone.confidence),$("div",{class:"mst",role:"img","aria-label":"Skala Monk, skin tone "+d.skinTone.label},mst)),
+    $("div",{class:"card"},$("p",{class:"label"},"Undertone"),$("p",{class:"big"},d.undertone.label),conf(d.undertone.confidence),$("div",{class:"row"},undertoneDot,$("span",{class:"label"},d.undertone.label+" undertone")))
+  ));
+
+  // 3. Color season
+  const primarySwatch=$("i",{class:"sw",style:`background:${d.season.primary.color}`});
+  const secondarySwatch=$("i",{class:"sw",style:`background:${d.season.secondary.color}`});
+  cur.append($("h2",{},"Color season"),$("p",{class:"sub"},"Season utama dan sister season berdasarkan analisis LLM."),
+    $("div",{class:"card"},
+      $("div",{class:"season-results"},
+        $("div",{class:"season-primary"},$("span",{class:"label"},"Season utama"),$("span",{class:"season-name"},primarySwatch,d.season.primary.name)),
+        $("div",{class:"season-secondary"},$("span",{},"Sister season"),$("span",{class:"season-name"},secondarySwatch,d.season.secondary.name)))));
+
+  newPage();   // halaman 2: alasan, look & warna
+  // Alasan rekomendasi & analisis AI (setelah color season)
+  cur.append($("h2",{},"Alasan rekomendasi dan analisis AI"),
+    $("div",{class:"rgs"},d.reasons.map(g=>$("section",{class:"rg card"},$("h3",{},g.title),
+      $("dl",{},g.items.flatMap(i=>i.label?[$("dt",{},i.label),$("dd",{},i.text)]:[$("dd",{class:"full"},i.text)]))))));
+
+  // Look & warna
+  const chips=[["eye","Eye"],["blush","Blush"],["lip","Lip"]].map(([k,n])=>
+    $("div",{class:"cg"},
+      $("h3",{},n),
+      $("div",{class:"trio"},(d.colors[k]||[]).map(c=>
+        $("div",{},
+          $("div",{class:"c",style:`background:${c.hex}`,role:"img","aria-label":`${c.name} ${c.hex}`}),
+          $("div",{class:"n"},c.name,$("code",{},c.hex))
+        )
+      ))
+    )
+  );
+  cur.append($("div",{class:"sec"},$("h2",{},"Look & warna makeup"),$("p",{class:"sub"},"Palet HEX menampilkan warna yang dihasilkan LLM; acuannya adalah panduan season pada knowledge base."),
+    $("div",{class:"grid g2"},
+      $("div",{class:"card look"},img(d.look.image,"","Look "+d.look.name,"Foto look dari KB"),$("p",{class:"big",style:"margin-top:12px"},d.look.name),$("p",{class:"label"},d.look.desc)),
+      $("div",{class:"card"},chips))));
+
+  newPage();   // halaman 3: produk
+  // 6. Produk
+  cur.append($("h2",{},"Produk rekomendasi"));
+  CATS.forEach(([k,n])=>{
+    const items=d.products[k]||[];
+    cur.append($("div",{class:"sec"},$("h3",{class:"ph3",style:"margin:22px 0 10px;font-size:1rem"},`${n} (${items.length})`),
+      items.length?$("div",{class:"pgrid"},items.map(p=>{
+        const pic=p.image?$("img",{src:p.image,class:"pi",alt:p.name}):$("div",{class:"pi",style:`background:${p.hex}`,role:"img","aria-label":"Warna "+p.shade});
+        const nm=p.url?$("a",{href:p.url,target:"_blank",rel:"noopener"},p.name):p.name;
+        return $("div",{class:"prod card",style:"padding:10px"},pic,$("div",{class:"pn"},nm),$("div",{class:"meta"},`${p.brand} · ${p.shade}`));})): $("p",{class:"sub"},"Tidak ada rekomendasi untuk kategori ini.")));
+  });
+
+  cur.append($("p",{class:"sub note"},"Hasil analisis berbasis AI; warna di layar bisa berbeda dari produk asli."));
+}
+render();
+</script>
+</body>
+</html>

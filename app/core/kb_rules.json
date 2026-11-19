@@ -1,0 +1,499 @@
+{
+  "SPRING_LIGHT": {
+    "season_code": "SPRING_LIGHT",
+    "season_name": "Spring Light",
+    "undertone": "Warm",
+    "target_skintone": [
+      "Fair"
+    ],
+    "target_saturation": [
+      "Low"
+    ],
+    "makeup_look": "Soft & Fresh Glowing Makeup",
+    "look_file_name": "1_face.png",
+    "eye_makeup": {
+      "technique": "Natural eyebrows; simple eyeliner; soft, gentle shimmer.",
+      "direction": "Gentle shimmer; soft pink/peach swatches.",
+      "hex_colors": [
+        "#FED2DB",
+        "#F8D7F2",
+        "#F8ADA7"
+      ]
+    },
+    "blush_makeup": {
+      "application": "Gentle application focused on the center of the face; dewy-looking freshness.",
+      "direction": "Soft peach / gentle pink.",
+      "hex_colors": [
+        "#FEA0A2",
+        "#FFD2D4",
+        "#F8ADA7"
+      ]
+    },
+    "lip_makeup": {
+      "finish": "Glossy, natural, plump and healthy-looking lips.",
+      "direction": "Natural peach / coral.",
+      "hex_colors": [
+        "#ED6254",
+        "#FEA0A2",
+        "#E37A71"
+      ]
+    },
+    "complexion_finish": "Fresh glowing skin; light–medium coverage; natural finish; minimal contour and soft definition."
+  },
+  "SPRING_CLEAR": {
+    "season_code": "SPRING_CLEAR",
+    "season_name": "Spring Clear",
+    "undertone": "Warm",
+    "target_skintone": [
+      "Fair"
+    ],
+    "target_saturation": [
+      "High"
+    ],
+    "makeup_look": "Fresh & Bright Coral-Pink Makeup",
+    "look_file_name": "2_face.png",
+    "eye_makeup": {
+      "technique": "Soft pink and mauve eyeshadow; thin eyeliner; natural lashes; subtle shimmer highlight.",
+      "direction": "Soft pink & mauve.",
+      "hex_colors": [
+        "#FDA599",
+        "#FDAF93",
+        "#FD9081"
+      ]
+    },
+    "blush_makeup": {
+      "application": "Soft peachy-pink blush, buildable and slightly vibrant; focus on center of cheeks.",
+      "direction": "Soft peachy-pink, brighter buildable intensity.",
+      "hex_colors": [
+        "#FE95C0",
+        "#421F52",
+        "#E25E9C"
+      ]
+    },
+    "lip_makeup": {
+      "finish": "Glossy finish; fresh and juicy lips.",
+      "direction": "Bright coral-pink shades.",
+      "hex_colors": [
+        "#F43C48",
+        "#FDA599",
+        "#FB638D"
+      ]
+    },
+    "complexion_finish": "Fresh radiant finish; light natural coverage; soft shading for subtle definition."
+  },
+  "SPRING_STRONG": {
+    "season_code": "SPRING_STRONG",
+    "season_name": "Spring Strong",
+    "undertone": "Warm",
+    "target_skintone": [
+      "Medium",
+      "Tanned"
+    ],
+    "target_saturation": [
+      "High"
+    ],
+    "makeup_look": "Warm Coral & Tomato-Red Makeup",
+    "look_file_name": "3_face.png",
+    "eye_makeup": {
+      "technique": "Simple, natural eye makeup with brown and orange tones.",
+      "direction": "Brown + orange.",
+      "hex_colors": [
+        "#EC6054",
+        "#A76F5D",
+        "#010101"
+      ]
+    },
+    "blush_makeup": {
+      "application": "Pigmented blush application; warm-color emphasis.",
+      "direction": "Coral & orange.",
+      "hex_colors": [
+        "#F3616C",
+        "#E96555",
+        "#FF3331"
+      ]
+    },
+    "lip_makeup": {
+      "finish": "Stronger defined red lip; warm orange hint.",
+      "direction": "Tomato red / chilli red / warm red.",
+      "hex_colors": [
+        "#FF3331",
+        "#C9220B",
+        "#D73401"
+      ]
+    },
+    "complexion_finish": "Fresh radiant skin; light natural coverage; add bronzer and shading to finish."
+  },
+  "AUTUMN_MUTED": {
+    "season_code": "AUTUMN_MUTED",
+    "season_name": "Autumn Muted",
+    "undertone": "Warm",
+    "target_skintone": [
+      "Medium "
+    ],
+    "target_saturation": [
+      "Medium"
+    ],
+    "makeup_look": "Soft Brown & Rosy-Nude Makeup",
+    "look_file_name": "4_face.png",
+    "eye_makeup": {
+      "technique": "Soft brown eyeshadow; natural defined eyeliner; wispy lifted lashes.",
+      "direction": "Soft brown.",
+      "hex_colors": [
+        "#E0B8AA",
+        "#BF9688",
+        "#957164"
+      ]
+    },
+    "blush_makeup": {
+      "application": "Medium-intensity blush focused on the cheekbones.",
+      "direction": "Soft peachy-pink.",
+      "hex_colors": [
+        "#F8ABA5",
+        "#E18A88",
+        "#EE8680"
+      ]
+    },
+    "lip_makeup": {
+      "finish": "Natural defined lips; glossy or velvet finish.",
+      "direction": "Soft rosy nude.",
+      "hex_colors": [
+        "#F8ABA5",
+        "#E18A88",
+        "#EE8680"
+      ]
+    },
+    "complexion_finish": "Smooth, radiant texture; light–medium coverage; soft natural glow; subtle shading."
+  },
+  "AUTUMN_DEEP": {
+    "season_code": "AUTUMN_DEEP",
+    "season_name": "Autumn Deep",
+    "undertone": "Warm",
+    "target_skintone": [
+      "Tanned",
+      "Deep"
+    ],
+    "target_saturation": [
+      "High"
+    ],
+    "makeup_look": "Neutral Brown & Peachy Nude Makeup",
+    "look_file_name": "5_face.png",
+    "eye_makeup": {
+      "technique": "Defined brows; soft winged eyeliner; neutral brown eyeshadow; long lifted lashes.",
+      "direction": "Neutral brown.",
+      "hex_colors": [
+        "#EDE2CF",
+        "#CA9688",
+        "#78483B"
+      ]
+    },
+    "blush_makeup": {
+      "application": "Light, soft blush placement with a natural glow.",
+      "direction": "Soft peach.",
+      "hex_colors": [
+        "#CA9688",
+        "#A76A5A",
+        "#784D41"
+      ]
+    },
+    "lip_makeup": {
+      "finish": "Soft fuller-looking lips, glossy finish.",
+      "direction": "Peachy nude.",
+      "hex_colors": [
+        "#A76F60",
+        "#9C3D4B",
+        "#6E2728"
+      ]
+    },
+    "complexion_finish": "Fresh glowing skin; light–medium coverage; natural skin-like finish."
+  },
+  "AUTUMN_DARK": {
+    "season_code": "AUTUMN_DARK",
+    "season_name": "Autumn Dark",
+    "undertone": "Warm",
+    "target_skintone": [
+      "Deep",
+      "Dark"
+    ],
+    "target_saturation": [
+      "High"
+    ],
+    "makeup_look": "Deep Brown Semi-Smokey Makeup",
+    "look_file_name": "6_face.png",
+    "eye_makeup": {
+      "technique": "Semi-smokey makeup; bold defined eyes; brownish colors.",
+      "direction": "Brown-based / deeper brown tones.",
+      "hex_colors": [
+        "#784D42",
+        "#6D2428",
+        "#9B3D4B"
+      ]
+    },
+    "blush_makeup": {
+      "application": "Natural fresh radiant blush effect; deeper shades.",
+      "direction": "Deep orange & deep red.",
+      "hex_colors": [
+        "#70242B",
+        "#C8210A",
+        "#D53200"
+      ]
+    },
+    "lip_makeup": {
+      "finish": "Defined matte lips.",
+      "direction": "Warm brown-based lips.",
+      "hex_colors": [
+        "#703002",
+        "#91230B",
+        "#5C0200"
+      ]
+    },
+    "complexion_finish": "Full-coverage finish; strong contour/shading; satin–matte complexion; avoid overly dewy finish (source)."
+  },
+  "SUMMER_LIGHT": {
+    "season_code": "SUMMER_LIGHT",
+    "season_name": "Summer Light",
+    "undertone": "Cool",
+    "target_skintone": [
+      "Fair"
+    ],
+    "target_saturation": [
+      "Low"
+    ],
+    "makeup_look": "Soft Cool Pink & Youthful Glow Makeup",
+    "look_file_name": "7_face.png",
+    "eye_makeup": {
+      "technique": "Soft pink/purple eyeshadow; thin eyeliner; wispy lashes; shimmer highlight.",
+      "direction": "Soft pink or purple.",
+      "hex_colors": [
+        "#FFB2F7",
+        "#FE8FF4",
+        "#BB9BC4"
+      ]
+    },
+    "blush_makeup": {
+      "application": "Soft airbrushed application focused on middle-to-side face area.",
+      "direction": "Cool pink.",
+      "hex_colors": [
+        "#FE95C0",
+        "#BC9CC4",
+        "#E25E9C"
+      ]
+    },
+    "lip_makeup": {
+      "finish": "Soft gradient lips; glossy finish.",
+      "direction": "Soft cool pink nude.",
+      "hex_colors": [
+        "#C79599",
+        "#DB3059",
+        "#E35E9D"
+      ]
+    },
+    "complexion_finish": "Fresh radiant youthful glow; light natural coverage; subtle definition."
+  },
+  "SUMMER_MUTE": {
+    "season_code": "SUMMER_MUTE",
+    "season_name": "Summer Mute",
+    "undertone": "Cool",
+    "target_skintone": [
+      "Medium"
+    ],
+    "target_saturation": [
+      "Medium"
+    ],
+    "makeup_look": "Soft Dusty Pink & Mauve Makeup",
+    "look_file_name": "8_face.png",
+    "eye_makeup": {
+      "technique": "Soft pink and mauve eyeshadow; thin eyeliner; natural lashes; subtle shimmer highlight.",
+      "direction": "Soft pink & mauve.",
+      "hex_colors": [
+        "#BC9BC4",
+        "#F7D6F2",
+        "#B9758B"
+      ]
+    },
+    "blush_makeup": {
+      "application": "Buildable soft dusty-pink blush; focus center of cheeks.",
+      "direction": "Soft dusty pink; slightly more vibrant as built up.",
+      "hex_colors": [
+        "#BC9BC3",
+        "#AB6385",
+        "#D25476"
+      ]
+    },
+    "lip_makeup": {
+      "finish": "Natural healthy-looking lips; dusty, not overly vibrant.",
+      "direction": "Dusty mauve.",
+      "hex_colors": [
+        "#AC6485",
+        "#D25577",
+        "#BE2B68"
+      ]
+    },
+    "complexion_finish": "Fresh radiant healthy glow; light natural coverage; soft shading. Source also says 'soft warm-pink' complexion note."
+  },
+  "SUMMER_CLEAR": {
+    "season_code": "SUMMER_CLEAR",
+    "season_name": "Summer Clear",
+    "undertone": "Cool",
+    "target_skintone": [
+      "Fair",
+      "Medium"
+    ],
+    "target_saturation": [
+      "Low",
+      "Medium"
+    ],
+    "makeup_look": "Bright Pink & Watermelon Makeup",
+    "look_file_name": "9_face.png",
+    "eye_makeup": {
+      "technique": "Natural pink eye makeup; thin eyeliner; natural lashes; subtle shimmer highlight.",
+      "direction": "Pink-based eye makeup.",
+      "hex_colors": [
+        "#EF8BA7",
+        "#EA61A3",
+        "#E3749E"
+      ]
+    },
+    "blush_makeup": {
+      "application": "Pink/purple blush-focused look; visible blush application.",
+      "direction": "Pink and purple based shades; slide says avoid coral & orange.",
+      "hex_colors": [
+        "#EE8BA6",
+        "#E4749F",
+        "#EB62A3"
+      ]
+    },
+    "lip_makeup": {
+      "finish": "Fresh radiant glossy finish.",
+      "direction": "Watermelon pink.",
+      "hex_colors": [
+        "#BE2B68",
+        "#FF94BF",
+        "#CB5F83"
+      ]
+    },
+    "complexion_finish": "Fresh glowing natural finish; light–medium coverage; minimal contour with soft definition."
+  },
+  "WINTER_STRONG": {
+    "season_code": "WINTER_STRONG",
+    "season_name": "Winter Strong",
+    "undertone": "Cool",
+    "target_skintone": [
+      "Tanned"
+    ],
+    "target_saturation": [
+      "High"
+    ],
+    "makeup_look": "Defined Cool Berry & Vibrant Makeup",
+    "look_file_name": "10_face.png",
+    "eye_makeup": {
+      "technique": "Defined cool-toned eye makeup; sharp eyeliner; defined lashes; cool shimmer highlight.",
+      "direction": "Defined cool-toned shadow / shimmer.",
+      "hex_colors": [
+        "#F1679C",
+        "#AC6585",
+        "#823258"
+      ]
+    },
+    "blush_makeup": {
+      "application": "Defined application with vibrant color.",
+      "direction": "Vibrant pink, berry & purple; avoid muted/coral/orange.",
+      "hex_colors": [
+        "#BB256B",
+        "#E35E9D",
+        "#C97681"
+      ]
+    },
+    "lip_makeup": {
+      "finish": "Vibrant defined glossy lips.",
+      "direction": "Cool berry / watermelon.",
+      "hex_colors": [
+        "#D21653",
+        "#BE2C68",
+        "#FE0253"
+      ]
+    },
+    "complexion_finish": "Fresh polished radiant finish; light–medium coverage; soft yet defined contour."
+  },
+  "WINTER_DEEP": {
+    "season_code": "WINTER_DEEP",
+    "season_name": "Winter Deep",
+    "undertone": "Cool",
+    "target_skintone": [
+      "Deep"
+    ],
+    "target_saturation": [
+      "High"
+    ],
+    "makeup_look": "Rich Berry & Defined Plum Makeup",
+    "look_file_name": "11_face.png",
+    "eye_makeup": {
+      "technique": "Deep cool-toned shadow; clean liner; fuller defined lashes; metallic shimmer.",
+      "direction": "Deep cool tones / metallic shimmer.",
+      "hex_colors": [
+        "#551D37",
+        "#AB6385",
+        "#F0669C"
+      ]
+    },
+    "blush_makeup": {
+      "application": "Deep defined blush effect.",
+      "direction": "Rich berry, plum & deep pink; avoid coral/orange and overly muted tones.",
+      "hex_colors": [
+        "#82575A",
+        "#A5515B",
+        "#791F0A"
+      ]
+    },
+    "lip_makeup": {
+      "finish": "Glossy or satin lip with rich defined color.",
+      "direction": "Deep berry / wine.",
+      "hex_colors": [
+        "#9D676E",
+        "#641133",
+        "#B34259"
+      ]
+    },
+    "complexion_finish": "Smooth radiant sophisticated finish; medium coverage; structured contour and facial dimension."
+  },
+  "WINTER_DARK": {
+    "season_code": "WINTER_DARK",
+    "season_name": "Winter Dark",
+    "undertone": "Cool",
+    "target_skintone": [
+      "Dark"
+    ],
+    "target_saturation": [
+      "High"
+    ],
+    "makeup_look": "Dark Jewel-Toned & Wine Makeup",
+    "look_file_name": "12_face.png",
+    "eye_makeup": {
+      "technique": "Deep defined cool eye makeup; defined eyeliner; voluminous lashes; jewel-toned shimmer.",
+      "direction": "Deep cool tones / jewel-toned shimmer.",
+      "hex_colors": [
+        "#5E1F02",
+        "#4D2F23",
+        "#633F30"
+      ]
+    },
+    "blush_makeup": {
+      "application": "Strong defined blush for added dimension.",
+      "direction": "Rich berry / plum / wine; avoid warm pale/orange based tones.",
+      "hex_colors": [
+        "#82335B",
+        "#851851",
+        "#BB236B"
+      ]
+    },
+    "lip_makeup": {
+      "finish": "Rich defined glossy lip.",
+      "direction": "Deep berry / wine.",
+      "hex_colors": [
+        "#5F172D",
+        "#820E2E",
+        "#8E2B4E"
+      ]
+    },
+    "complexion_finish": "Rich luminous radiant finish; medium coverage; defined contour for structure."
+  }
+}
