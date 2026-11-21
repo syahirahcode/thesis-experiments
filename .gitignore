@@ -30,5 +30,5 @@ sdks/
 .env.*
 
 # Public repository: keep test_data folder, but not its private test images
-/experiments/test_data/*
-!/experiments/test_data/.gitkeep
+/experiments/tests_data/*
+!/experiments/tests_data/.gitkeep
