@@ -348,6 +348,40 @@ MediaPipe menggunakan `face_landmarker.task` dari working directory
 `backend/` dan akan mengunduh file tersebut otomatis jika belum ada. Karena itu,
 run pertama memerlukan akses jaringan.
 
+### Citra uji RQ2/RQ3 (24 kasus)
+
+Folder ini dikosongkan di repositori publik karena berisi foto wajah dari dataset pihak ketiga.
+Letakkan 24 citra berikut di folder ini dengan nama file persis sama. Skrip `experiments/run_eval_rq2_rq3.py` mencocokkan nama file dengan kolom `File Name` pada `experiments/Final Dataset - Data.csv`; nama yang berbeda atau citra di luar daftar akan gagal diproses.
+
+Sumber citra: UTKFace (penggunaan riset non-komersial) dan FFHQ-Aging/FFHQ (lisensi per citra mengikuti metadata FFHQ, NVIDIA). Salinan 24 citra tersedia atas permintaan kepada peneliti.
+
+| Case ID | File Name | Sumber | Skin tone | Undertone | Saturation |
+|---|---|---|---|---|---|
+| 104 | 45_0_3_20170119171812944_219adb23.jpg | UTKFace | Deep | Warm | High |
+| 432 | 24_0_0_20170104004125063_87bee4fe.jpg | UTKFace | Fair | Cool | Low |
+| 159 | 15_0_2_20170102235056163_d1ddb9a2.jpg | UTKFace | Tanned | Warm | High |
+| 161 | 16_1_4_20170103201021199_e64ac206.jpg | UTKFace | Medium | Cool | Medium |
+| 206 | 27_0_4_20170103234827428_68d57cc1.jpg | UTKFace | Tanned | Cool | High |
+| 215 | 24_0_2_20161219192432539_8ccb419b.jpg | FFHQ-Aging | Fair | Warm | Low |
+| 224 | 15_1_3_20170104222007428_30ab6dca.jpg | UTKFace | Deep | Warm | High |
+| 225 | 22_1_1_20170116172633295_2262d342.jpg | UTKFace | Medium | Warm | Medium |
+| 229 | 17_1_1_20170113005047678_718d7220.jpg | UTKFace | Dark | Warm | High |
+| 314 | 26_0_2_20170119184055239_0ca4e97b.jpg | UTKFace | Deep | Cool | High |
+| 492 | 26_1_1_20170113000552163_24c60fb5.jpg | UTKFace | Dark | Cool | High |
+| 493 | 17_0_4_20170103201055366_c1100fa9.jpg | UTKFace | Medium | Warm | Medium |
+| 510 | 34_0_4_20170117105033191_df8cf953.jpg | UTKFace | Dark | Warm | High |
+| 515 | 15_1_4_20170103201329807_13086b50.jpg | UTKFace | Tanned | Warm | High |
+| 525 | 18_1_0_20170109214749825_76fbc42b.jpg | UTKFace | Fair | Cool | Low |
+| 576 | 18_1_4_20170103201320721_af2494b7.jpg | UTKFace | Medium | Cool | Medium |
+| 602 | 19_1_3_20170119145633822_5ccbecf6.jpg | UTKFace | Tanned | Cool | High |
+| 722 | 40_1_1_20170113001728994_b81d11ef.jpg | UTKFace | Deep | Cool | High |
+| 899 | 02255.png | FFHQ-Aging | Medium | Cool | Medium |
+| 906 | 59085.png | FFHQ-Aging | Fair | Warm | Low |
+| 939 | 36110.png | FFHQ-Aging | Dark | Cool | High |
+| 968 | 18759.png | FFHQ-Aging | Fair | Warm | Low |
+| 969 | 11780.png | FFHQ-Aging | Fair | Cool | Low |
+| 994 | 24729.png | FFHQ-Aging | Fair | Warm | Low |
+
 #### 6. Preview, lalu jalankan RQ2/RQ3
 
 Validasi setup dan preview run kecil tanpa memanggil agent:
