@@ -7,6 +7,18 @@ from typing import Any, Callable
 from app.core.product_repository import ProductRepository
 from app.schemas.analysis import ProductCategory, ToolCallRecord, VisualAttributes
 
+PRODUCT_TOOL_FIELDS = {
+    "product_id",
+    "product_name",
+    "brand",
+    "category",
+    "shade",
+    "target_season",
+    "target_undertone",
+    "target_skintone",
+    "target_saturation",
+}
+
 
 class ToolExecutionError(RuntimeError):
     def __init__(self, error: Exception, tool_calls: list[ToolCallRecord]):
@@ -46,7 +58,10 @@ class ProductSearchTool:
             },
         )
         self.searched_categories.add(category)
-        return [product.model_dump(mode="json") for product in found]
+        return [
+            product.model_dump(mode="json", include=PRODUCT_TOOL_FIELDS)
+            for product in found
+        ]
 
     @property
     def declarations(self) -> list[dict[str, Any]]:

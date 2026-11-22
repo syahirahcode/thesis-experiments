@@ -6,11 +6,6 @@ from typing import Any
 
 from app.core.agents.prompts import REASONING_SYSTEM
 from app.core.config import Settings, get_settings
-from app.core.kb_matching import (
-    SeasonContractViolation,
-    merge_retry_generation,
-    reasoning_violations,
-)
 from app.core.llm_client import LLMClientProtocol, StructuredGeneration
 from app.core.llm_client_vikey import build_llm_client
 from app.core.product_repository import JsonProductRepository, ProductRepository
@@ -69,32 +64,6 @@ class ReasoningAgent:
             prompt=prompt,
             schema=ReasoningAgentOutput,
         )
-        if generation is None:
-            return None
-
-        violations = reasoning_violations(
-            generation.value, attributes, self.kb_rules
-        )
-        if not violations:
-            return generation
-
-        prompt_payload["contract_violations"] = violations
-        retry_generation = self.llm_client.generate_structured(
-            system=REASONING_SYSTEM,
-            prompt=json.dumps(prompt_payload, ensure_ascii=False),
-            schema=ReasoningAgentOutput,
-        )
-        if retry_generation is None:
-            return None
-
-        merge_retry_generation(generation, retry_generation)
-        violations = reasoning_violations(
-            generation.value, attributes, self.kb_rules
-        )
-        if violations:
-            raise SeasonContractViolation(
-                "Season contract violated: " + "; ".join(violations), generation
-            )
         return generation
 
 

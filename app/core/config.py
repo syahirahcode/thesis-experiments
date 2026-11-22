@@ -58,6 +58,7 @@ class Settings(BaseSettings):
     LLM_TIMEOUT_SECONDS: float = 60.0
     LLM_MAX_RETRIES: int = 2
     LLM_MAX_ROUNDS: int = Field(default=8, ge=1)
+    LLM_MAX_TOKENS: int = Field(default=8192, ge=1)
 
     # --- LLM (VIKEY, OpenAI-compatible endpoint) ---------------------------
     LLM_OPTION: str = "gemini"  # gemini | vikey

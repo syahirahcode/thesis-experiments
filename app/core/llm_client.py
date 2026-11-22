@@ -8,7 +8,7 @@ from typing import Any, Generic, Protocol, TypeVar
 
 from pydantic import BaseModel
 
-from app.schemas.analysis import ToolCallRecord
+from app.schemas.analysis import LLMRoundTrace, ToolCallRecord
 
 T = TypeVar("T", bound=BaseModel)
 GEMINI_REQUEST_DELAY_SECONDS = 6
@@ -57,6 +57,7 @@ class StructuredGeneration(Generic[T]):
     input_tokens: int
     output_tokens: int
     tool_calls: list[ToolCallRecord] = field(default_factory=list)
+    llm_round_details: list[LLMRoundTrace] = field(default_factory=list)
 
 
 class StructuredGenerationError(RuntimeError):
@@ -70,6 +71,7 @@ class StructuredGenerationError(RuntimeError):
         input_tokens: int,
         output_tokens: int,
         tool_calls: list[ToolCallRecord],
+        llm_round_details: list[LLMRoundTrace] | None = None,
     ):
         super().__init__(str(error))
         self.original_error = error
@@ -79,6 +81,7 @@ class StructuredGenerationError(RuntimeError):
         self.input_tokens = input_tokens
         self.output_tokens = output_tokens
         self.tool_calls = tool_calls
+        self.llm_round_details = llm_round_details or []
 
 
 class GoogleGenAIClient:

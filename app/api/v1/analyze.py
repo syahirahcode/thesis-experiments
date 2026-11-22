@@ -24,7 +24,8 @@ from app.core.agents.facial_agent import FacialAgent
 from app.core.agents.orchestrator import OrchestratorAgent
 from app.core.config import Settings, get_settings
 from app.core.html_generator import HTMLGenerator
-from app.core.product_repository import JsonProductRepository
+from app.core.product_repository import ProductRepository
+from app.core.product_repository_pg import build_product_repository
 from app.schemas.analysis import (
     AgentMode,
     AnalysisRequest,
@@ -44,13 +45,13 @@ MIN_IMAGE_HEIGHT = 200
 
 # Singleton orchestrator agent
 _orchestrator: OrchestratorAgent | None = None
-_product_repo: JsonProductRepository | None = None
+_product_repo: ProductRepository | None = None
 
 
-def get_product_repo(settings: Settings) -> JsonProductRepository:
+def get_product_repo(settings: Settings) -> ProductRepository:
     global _product_repo
     if _product_repo is None:
-        _product_repo = JsonProductRepository(settings.PRODUCTS_PATH)
+        _product_repo = build_product_repository(settings)
     return _product_repo
 
 

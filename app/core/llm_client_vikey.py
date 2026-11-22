@@ -30,7 +30,7 @@ from app.core.llm_client import (
     StructuredGenerationError,
     ToolInvoker,
 )
-from app.schemas.analysis import ToolCallRecord
+from app.schemas.analysis import LLMRoundTrace, ToolCallRecord
 
 RETRYABLE_STATUS = {408, 409, 425, 429, 500, 502, 503, 504}
 
@@ -99,6 +99,7 @@ class VikeyClient:
         timeout_seconds: float,
         max_retries: int,
         max_rounds: int,
+        max_tokens: int = 8192,
         session: requests.Session | None = None,
     ):
         self.api_key = api_key
@@ -108,6 +109,7 @@ class VikeyClient:
         self.timeout_seconds = timeout_seconds
         self.max_retries = max_retries
         self.max_rounds = max_rounds
+        self.max_tokens = max_tokens
         self.session = session or requests.Session()
 
     # --- transport -------------------------------------------------------- #
@@ -167,6 +169,7 @@ class VikeyClient:
         input_tokens = 0
         output_tokens = 0
         tool_calls: list[ToolCallRecord] = []
+        llm_round_details: list[LLMRoundTrace] = []
         final_text: str | None = None
 
         while llm_rounds < self.max_rounds:
@@ -175,6 +178,7 @@ class VikeyClient:
                 "model": self.model,
                 "messages": messages,
                 "temperature": self.temperature,
+                "max_tokens": self.max_tokens,
             }
             if declarations:
                 body["tools"] = openai_tools(declarations)
@@ -197,12 +201,31 @@ class VikeyClient:
             llm_rounds += 1
             usage = payload.get("usage") or {}
             input_tokens += int(usage.get("prompt_tokens") or 0)
-            output_tokens += int(usage.get("completion_tokens") or 0)
+            completion_tokens = int(usage.get("completion_tokens") or 0)
+            output_tokens += completion_tokens
 
             choices = payload.get("choices") or []
+            choice = choices[0] if choices else {}
+            llm_round_details.append(
+                LLMRoundTrace(
+                    round_number=llm_rounds,
+                    finish_reason=choice.get("finish_reason"),
+                    completion_tokens=completion_tokens,
+                )
+            )
             if not choices:
-                raise ValueError(f"VIKEY returned no choices: {str(payload)[:200]}")
-            message = choices[0].get("message") or {}
+                error = ValueError(f"VIKEY returned no choices: {str(payload)[:200]}")
+                raise StructuredGenerationError(
+                    error,
+                    latency_ms=(time.perf_counter() - started) * 1000.0,
+                    attempts=total_attempts,
+                    llm_rounds=llm_rounds,
+                    input_tokens=input_tokens,
+                    output_tokens=output_tokens,
+                    tool_calls=tool_calls,
+                    llm_round_details=llm_round_details,
+                ) from error
+            message = choice.get("message") or {}
             calls = message.get("tool_calls") or []
 
             if not calls:
@@ -246,6 +269,7 @@ class VikeyClient:
                         input_tokens=input_tokens,
                         output_tokens=output_tokens,
                         tool_calls=[*tool_calls, *failed_calls],
+                        llm_round_details=llm_round_details,
                     ) from error
 
                 tool_calls.append(
@@ -277,18 +301,40 @@ class VikeyClient:
                 input_tokens=input_tokens,
                 output_tokens=output_tokens,
                 tool_calls=tool_calls,
+                llm_round_details=llm_round_details,
             ) from error
 
         try:
             parsed = json.loads(extract_json(final_text))
         except json.JSONDecodeError as error:
-            raise json.JSONDecodeError(
+            parse_error = json.JSONDecodeError(
                 f"VIKEY returned invalid JSON for {schema.__name__}: {error.msg}",
                 error.doc,
                 error.pos,
+            )
+            raise StructuredGenerationError(
+                parse_error,
+                latency_ms=(time.perf_counter() - started) * 1000.0,
+                attempts=total_attempts,
+                llm_rounds=llm_rounds,
+                input_tokens=input_tokens,
+                output_tokens=output_tokens,
+                tool_calls=tool_calls,
+                llm_round_details=llm_round_details,
             ) from error
-
-        value = schema.model_validate(parsed)
+        try:
+            value = schema.model_validate(parsed)
+        except Exception as error:
+            raise StructuredGenerationError(
+                error,
+                latency_ms=(time.perf_counter() - started) * 1000.0,
+                attempts=total_attempts,
+                llm_rounds=llm_rounds,
+                input_tokens=input_tokens,
+                output_tokens=output_tokens,
+                tool_calls=tool_calls,
+                llm_round_details=llm_round_details,
+            ) from error
         return StructuredGeneration(
             value=value,
             latency_ms=(time.perf_counter() - started) * 1000.0,
@@ -297,6 +343,7 @@ class VikeyClient:
             input_tokens=input_tokens,
             output_tokens=output_tokens,
             tool_calls=tool_calls,
+            llm_round_details=llm_round_details,
         )
 
     @staticmethod
@@ -327,6 +374,7 @@ def build_llm_client(settings: Settings | None = None) -> LLMClientProtocol:
             timeout_seconds=settings.LLM_TIMEOUT_SECONDS,
             max_retries=settings.LLM_MAX_RETRIES,
             max_rounds=settings.LLM_MAX_ROUNDS,
+            max_tokens=settings.LLM_MAX_TOKENS,
         )
     return GoogleGenAIClient(
         api_key=settings.require_api_key(),

@@ -110,6 +110,12 @@ class ToolCallRecord(BaseModel):
     latency_ms: float = 0.0
 
 
+class LLMRoundTrace(BaseModel):
+    round_number: int
+    finish_reason: str | None = None
+    completion_tokens: int = 0
+
+
 # Tahapan ideal per kasus -> penyebut TC (jejak antar-agen Multi-Agent)
 REQUIRED_STAGES: tuple[PipelineStage, ...] = (
     PipelineStage.FACIAL_ANALYSIS,
@@ -467,6 +473,7 @@ class TraceStep(BaseModel):
     evidence: list[str] = Field(default_factory=list)  # season_code / product_id yang dipakai
     retries: int = 0
     tool_calls: list[ToolCallRecord] = Field(default_factory=list)
+    llm_round_details: list[LLMRoundTrace] = Field(default_factory=list)
     llm_rounds: int = 0
     input_tokens: int = 0
     output_tokens: int = 0

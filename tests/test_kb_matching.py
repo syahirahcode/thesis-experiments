@@ -5,20 +5,16 @@ from types import SimpleNamespace
 
 from app.core.agents.reasoning_agent import ReasoningAgent
 from app.core.agents.single_agent import SingleAgent
-from app.core.agents.orchestrator import OrchestratorAgent
 from app.core.eval_metrics import _rule_mismatches
 from app.core.kb_matching import matching_seasons, reasoning_violations, rule_matches
 from app.core.llm_client import StructuredGeneration
 from app.schemas.analysis import (
-    AgentName,
-    FacialAgentOutput,
     NaturalLanguageExplanation,
     ProductAgentOutput,
     ReasonGroup,
     ReasoningAgentOutput,
     SeasonRule,
     SingleAgentOutput,
-    StepStatus,
     VisualAttributes,
 )
 from app.core.config import Settings
@@ -195,16 +191,15 @@ class _SequenceLLM:
         )
 
 
-def test_both_reasoning_modes_retry_and_count_contract_retry() -> None:
+def test_both_reasoning_modes_do_not_retry_season_contract_violations() -> None:
     kb = _kb_rules()
     attrs = _attributes("Warm", "Fair", "Low")
     wrong = _reasoning(
         season_code="SPRING_CLEAR",
         secondary_season_code="SPRING_LIGHT",
     )
-    correct = _reasoning()
 
-    reasoning_llm = _SequenceLLM([wrong, correct])
+    reasoning_llm = _SequenceLLM([wrong])
     generation = ReasoningAgent(
         llm_client=reasoning_llm,
         kb_rules=kb,
@@ -212,23 +207,18 @@ def test_both_reasoning_modes_retry_and_count_contract_retry() -> None:
     ).analyze(attrs)
 
     assert generation is not None
-    assert generation.value.season_code == "SPRING_LIGHT"
-    assert generation.llm_rounds == 2
-    assert generation.input_tokens == 200
-    assert generation.contract_retries == 1
-    assert "contract_violations" in json.loads(reasoning_llm.calls[1]["prompt"])
+    assert generation.value.season_code == "SPRING_CLEAR"
+    assert generation.llm_rounds == 1
+    assert generation.input_tokens == 100
+    assert len(reasoning_llm.calls) == 1
+    assert "contract_violations" not in json.loads(reasoning_llm.calls[0]["prompt"])
 
     bad_single = SingleAgentOutput(
         reasoning=wrong,
         products=ProductAgentOutput(),
         explanation=NaturalLanguageExplanation(summary="", groups=[]),
     )
-    good_single = SingleAgentOutput(
-        reasoning=correct,
-        products=ProductAgentOutput(),
-        explanation=NaturalLanguageExplanation(summary="", groups=[]),
-    )
-    single_llm = _SequenceLLM([bad_single, good_single])
+    single_llm = _SequenceLLM([bad_single])
     single_agent = SingleAgent(
         llm_client=single_llm,
         settings=Settings(ATTRIBUTE_SOURCE="ground_truth"),
@@ -240,69 +230,10 @@ def test_both_reasoning_modes_retry_and_count_contract_retry() -> None:
     )
 
     assert result is not None
-    assert result.reasoning.season_code == "SPRING_LIGHT"
-    assert trace.llm_calls == 2
-    assert trace.steps[0].retries == 1
-    assert trace.steps[0].llm_rounds == 2
-    assert trace.steps[0].input_tokens == 200
-    assert "contract_violations" in json.loads(single_llm.calls[1]["prompt"])
-
-
-def test_second_contract_violation_fails_and_keeps_retry_metrics_in_both_traces() -> None:
-    kb = _kb_rules()
-    attrs = _attributes("Warm", "Fair", "Low")
-    wrong = _reasoning(
-        season_code="SPRING_CLEAR",
-        secondary_season_code="SPRING_LIGHT",
-    )
-    facial = FacialAgentOutput(
-        attributes=attrs,
-        source="ground_truth",
-    )
-
-    multi_agent = OrchestratorAgent(
-        reasoning_agent=ReasoningAgent(
-            llm_client=_SequenceLLM([wrong, wrong]),
-            kb_rules=kb,
-            products=object(),
-        ),
-        product_agent=object(),
-        products=object(),
-    )
-    multi_trace, multi_result = multi_agent.analyze(
-        "case_multi", "unused.png", facial_output=facial
-    )
-
-    assert multi_result is None
-    assert multi_trace.final_status == StepStatus.FAILED
-    assert multi_trace.error_message.startswith("Season contract violated:")
-    reasoning_step = next(
-        step for step in multi_trace.steps if step.agent == AgentName.REASONING
-    )
-    assert reasoning_step.retries == 1
-    assert reasoning_step.llm_rounds == 2
-    assert reasoning_step.input_tokens == 200
-    assert multi_trace.llm_calls == 2
-
-    bad_single = SingleAgentOutput(
-        reasoning=wrong,
-        products=ProductAgentOutput(),
-        explanation=NaturalLanguageExplanation(summary="", groups=[]),
-    )
-    single_agent = SingleAgent(
-        llm_client=_SequenceLLM([bad_single, bad_single]),
-        settings=Settings(ATTRIBUTE_SOURCE="ground_truth"),
-        kb_rules=kb,
-        products=object(),
-    )
-    single_trace, single_result = single_agent.analyze(
-        "case_single", "unused.png", attributes_override=attrs
-    )
-
-    assert single_result is None
-    assert single_trace.final_status == StepStatus.FAILED
-    assert single_trace.error_message.startswith("Season contract violated:")
-    assert single_trace.steps[0].retries == 1
-    assert single_trace.steps[0].llm_rounds == 2
-    assert single_trace.steps[0].input_tokens == 200
-    assert single_trace.llm_calls == 2
+    assert result.reasoning.season_code == "SPRING_CLEAR"
+    assert trace.llm_calls == 1
+    assert trace.steps[0].retries == 0
+    assert trace.steps[0].llm_rounds == 1
+    assert trace.steps[0].input_tokens == 100
+    assert len(single_llm.calls) == 1
+    assert "contract_violations" not in json.loads(single_llm.calls[0]["prompt"])

@@ -9,6 +9,8 @@ from app.core.agents.orchestrator import OrchestratorAgent
 from app.core.agents.prompts import PRODUCT_RULES, SINGLE_AGENT_SYSTEM
 from app.core.agents.single_agent import SingleAgent
 from app.core.config import Settings
+from app.core.html_generator import HTMLGenerator
+from app.core.product_repository_pg import PostgresProductRepository
 from app.core.llm_client import (
     GoogleGenAIClient,
     StructuredGenerationError,
@@ -29,9 +31,11 @@ from app.schemas.analysis import (
     ExplanationItem,
     FinalAnalysisResult,
     FacialAgentOutput,
+    LLMRoundTrace,
     NaturalLanguageExplanation,
     ProductAgentOutput,
     ProductCategory,
+    Product,
     ProductPick,
     PipelineStage,
     ReasonGroup,
@@ -97,10 +101,13 @@ class FakeLLM:
         self.season_override = season_override
         self.hallucinate_product_id = hallucinate_product_id
         self.calls: list[dict] = []
+        self.initial_declarations: list[dict] | None = None
 
     def generate_structured(self, **kwargs):
         self.calls.append(kwargs)
         tools = kwargs["tools"]
+        if self.initial_declarations is None:
+            self.initial_declarations = tools.declarations
         season_code = self.season_override or "SPRING_LIGHT"
         recommendations = []
         tool_calls = []
@@ -153,6 +160,18 @@ class FakeLLM:
             input_tokens=100,
             output_tokens=40,
             tool_calls=tool_calls,
+            llm_round_details=[
+                LLMRoundTrace(
+                    round_number=1,
+                    finish_reason="tool_calls",
+                    completion_tokens=20,
+                ),
+                LLMRoundTrace(
+                    round_number=2,
+                    finish_reason="stop",
+                    completion_tokens=20,
+                ),
+            ],
         )
 
 
@@ -233,7 +252,41 @@ def test_product_agent_uses_tool_results_for_each_category():
         call.args["k"] == settings.TOP_K_PRODUCTS_PER_CATEGORY
         for call in generation.tool_calls
     )
-    k_parameter = llm.calls[0]["tools"].declarations[0]["parameters"]["properties"]["k"]
+    expected_tool_fields = {
+        "product_id",
+        "product_name",
+        "brand",
+        "category",
+        "shade",
+        "target_season",
+        "target_undertone",
+        "target_skintone",
+        "target_saturation",
+    }
+    search_results, _ = llm.calls[0]["tools"].invoke(
+        "search_products",
+        {
+            "season_code": "SPRING_LIGHT",
+            "category": "complexion",
+            "k": settings.TOP_K_PRODUCTS_PER_CATEGORY,
+        },
+    )
+    assert search_results
+    assert all(set(product) == expected_tool_fields for product in search_results)
+    assert not any(
+        forbidden in product
+        for product in search_results
+        for forbidden in (
+            "image_url",
+            "url",
+            "link",
+            "image_file",
+            "code_season",
+            "notes",
+        )
+    )
+    assert llm.initial_declarations is not None
+    k_parameter = llm.initial_declarations[0]["parameters"]["properties"]["k"]
     assert k_parameter["type"] == "INTEGER"
     assert k_parameter["minimum"] == settings.TOP_K_PRODUCTS_PER_CATEGORY
     assert k_parameter["maximum"] == settings.TOP_K_PRODUCTS_PER_CATEGORY
@@ -242,6 +295,100 @@ def test_product_agent_uses_tool_results_for_each_category():
     prompt = json.loads(llm.calls[0]["prompt"])
     assert "user_attributes" in prompt
     assert f"k exactly {settings.TOP_K_PRODUCTS_PER_CATEGORY}" in prompt["instructions"]
+
+
+def test_report_uses_full_catalog_image_url_by_product_id(monkeypatch) -> None:
+    settings = Settings()
+    kb_rules = json.loads(settings.KB_RULES_PATH.read_text(encoding="utf-8"))
+    product = Product(
+        product_id="PROD_001",
+        product_name="Test product",
+        brand="Test brand",
+        category="complexion",
+        target_season="SPRING_LIGHT",
+        target_undertone="Warm",
+        target_skintone="Fair",
+        target_saturation="Low",
+        image_url="https://example.test/product.png",
+    )
+    result = FinalAnalysisResult(
+        case_id="case_report_image",
+        mode=AgentMode.MULTI_AGENT,
+        attributes=VisualAttributes(
+            skintone="Fair", undertone="Warm", saturation="Low"
+        ),
+        reasoning=_reasoning(),
+        products=ProductAgentOutput(
+            recommendations=[
+                ProductPick(
+                    product_id=product.product_id,
+                    category=ProductCategory.COMPLEXION,
+                )
+            ]
+        ),
+        explanation=NaturalLanguageExplanation(summary="", groups=[]),
+    )
+    generator = HTMLGenerator()
+    monkeypatch.setattr(generator, "_image_reference", lambda path: str(path))
+
+    report = generator._report_data(
+        result,
+        input_image_path="input.jpg",
+        kb_rules=kb_rules,
+        catalog=[product.model_dump(mode="json")],
+    )
+    payload = generator._payload(report, "22 November 2026", False, None)
+
+    assert report.products[0].url == "https://example.test/product.png"
+    assert payload["products"]["complexion"][0]["image"] == (
+        "https://example.test/product.png"
+    )
+
+
+def test_postgres_product_search_tool_returns_only_llm_fields() -> None:
+    product = PostgresProductRepository._to_product(
+        {
+            "product_id": 1,
+            "brand": "Test brand",
+            "product_name": "Test product",
+            "shade": "Fair",
+            "category": "Foundation",
+            "code_season": 1,
+            "target_color_season": ["SPRING_LIGHT"],
+            "target_undertone": ["Warm"],
+            "target_skintone": ["Fair"],
+            "target_saturation": ["Low"],
+            "image_url": "https://example.test/product.png",
+            "notes": "private catalog note",
+        }
+    )
+
+    class PostgresResultRepository:
+        def search_products(self, season_code, category, k, attributes):
+            return [product]
+
+    tool = ProductSearchTool(
+        products=PostgresResultRepository(),
+        attributes=VisualAttributes(
+            skintone="Fair", undertone="Warm", saturation="Low"
+        ),
+        season_codes=["SPRING_LIGHT"],
+        top_k=1,
+    )
+
+    result = tool.search_products("SPRING_LIGHT", "complexion", 1)
+
+    assert set(result[0]) == {
+        "product_id",
+        "product_name",
+        "brand",
+        "category",
+        "shade",
+        "target_season",
+        "target_undertone",
+        "target_skintone",
+        "target_saturation",
+    }
 
 
 def test_wrong_season_tool_call_is_not_corrected_and_fails_product_grounding():
@@ -464,6 +611,12 @@ def test_both_modes_use_the_same_search_tool_and_print_prompt_diff():
     assert result is not None
     assert trace.llm_calls == 1
     assert trace.steps[0].llm_rounds == 2
+    assert [
+        detail.model_dump() for detail in trace.steps[0].llm_round_details
+    ] == [
+        {"round_number": 1, "finish_reason": "tool_calls", "completion_tokens": 20},
+        {"round_number": 2, "finish_reason": "stop", "completion_tokens": 20},
+    ]
     assert len(trace.steps[0].tool_calls) == len(ProductCategory)
     assert single_llm.calls[0]["system"] == SINGLE_AGENT_SYSTEM
     assert multi_llm.calls[0]["system"] == PRODUCT_RULES

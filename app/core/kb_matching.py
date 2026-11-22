@@ -1,12 +1,6 @@
-"""Season matching and output-contract validation for the knowledge base."""
+"""Season matching helpers for evaluation and tests."""
 
 from typing import Any
-
-
-class SeasonContractViolation(ValueError):
-    def __init__(self, message: str, generation: Any):
-        super().__init__(message)
-        self.generation = generation
 
 
 def _norm(value: Any) -> str:
@@ -75,15 +69,3 @@ def reasoning_violations(reasoning: Any, attributes: Any, kb_rules: dict) -> lis
     if reasoning.is_ambiguous:
         violations.append("is_ambiguous harus false")
     return violations
-
-
-def merge_retry_generation(first: Any, second: Any) -> None:
-    """Accumulate metrics from a contract retry into the original generation."""
-    first.value = second.value
-    first.latency_ms += second.latency_ms
-    first.attempts += second.attempts
-    first.llm_rounds += second.llm_rounds
-    first.input_tokens += second.input_tokens
-    first.output_tokens += second.output_tokens
-    first.tool_calls.extend(second.tool_calls)
-    first.contract_retries = getattr(first, "contract_retries", 0) + 1
