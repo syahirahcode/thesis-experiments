@@ -120,7 +120,7 @@
     "shade": "3.5",
     "target_season": "SPRING_STRONG",
     "target_undertone": "Warm",
-    "target_skintone": "Medium, Tanned",
+    "target_skintone": "Tanned",
     "target_saturation": "High",
     "image_file": "Product 39.png",
     "notes": ""
@@ -134,7 +134,7 @@
     "shade": "4 Neutral",
     "target_season": "SPRING_STRONG",
     "target_undertone": "Warm",
-    "target_skintone": "Medium, Tanned",
+    "target_skintone": "Tanned",
     "target_saturation": "High",
     "image_file": "Product 40.png",
     "notes": "Shade 4 Neutral sama dengan kode 5, tapi lini produk beda (Forever Skin Glow vs Forever Skin Wear) dan warna swatch beda."
@@ -148,7 +148,7 @@
     "shade": "NC25",
     "target_season": "SPRING_STRONG",
     "target_undertone": "Warm",
-    "target_skintone": "Medium, Tanned",
+    "target_skintone": "Tanned",
     "target_saturation": "High",
     "image_file": "Product 41.png",
     "notes": ""
@@ -162,7 +162,7 @@
     "shade": "222N Sunstone",
     "target_season": "SPRING_STRONG",
     "target_undertone": "Warm",
-    "target_skintone": "Medium, Tanned",
+    "target_skintone": "Tanned",
     "target_saturation": "High",
     "image_file": "Product 42.png",
     "notes": ""
@@ -232,7 +232,7 @@
     "shade": "4W1 Honey Bronze",
     "target_season": "AUTUMN_DEEP",
     "target_undertone": "Warm",
-    "target_skintone": "Tanned, Deep",
+    "target_skintone": "Deep",
     "target_saturation": "High",
     "image_file": "Product 76.png",
     "notes": ""
@@ -246,7 +246,7 @@
     "shade": "4 Neutral",
     "target_season": "AUTUMN_DEEP",
     "target_undertone": "Warm",
-    "target_skintone": "Tanned, Deep",
+    "target_skintone": "Deep",
     "target_saturation": "High",
     "image_file": "Product 77.png",
     "notes": "Shade 4 Neutral sama dengan kode 3, tapi lini produk beda (Forever Skin Wear vs Forever Skin Glow) dan warna swatch beda."
@@ -260,7 +260,7 @@
     "shade": "W40 - Tan",
     "target_season": "AUTUMN_DEEP",
     "target_undertone": "Warm",
-    "target_skintone": "Tanned, Deep",
+    "target_skintone": "Deep",
     "target_saturation": "High",
     "image_file": "Product 78.png",
     "notes": ""
@@ -274,7 +274,7 @@
     "shade": "NC30",
     "target_season": "AUTUMN_DEEP",
     "target_undertone": "Warm",
-    "target_skintone": "Tanned, Deep",
+    "target_skintone": "Deep",
     "target_saturation": "High",
     "image_file": "Product 79.png",
     "notes": ""
@@ -288,7 +288,7 @@
     "shade": "530 Deep",
     "target_season": "AUTUMN_DARK",
     "target_undertone": "Warm",
-    "target_skintone": "Deep, Dark",
+    "target_skintone": "Dark",
     "target_saturation": "High",
     "image_file": "Product 94.png",
     "notes": ""
@@ -302,7 +302,7 @@
     "shade": "580N Truffle Cake",
     "target_season": "AUTUMN_DARK",
     "target_undertone": "Warm",
-    "target_skintone": "Deep, Dark",
+    "target_skintone": "Dark",
     "target_saturation": "High",
     "image_file": "Product 95.png",
     "notes": "Judul sama dengan kode 12, tapi swatch di sini cokelat gelap, di kode 12 cokelat sedang."
@@ -316,7 +316,7 @@
     "shade": "570W Chocolate Swirl",
     "target_season": "AUTUMN_DARK",
     "target_undertone": "Warm",
-    "target_skintone": "Deep, Dark",
+    "target_skintone": "Dark",
     "target_saturation": "High",
     "image_file": "Product 96.png",
     "notes": "Judul sama dengan kode 11, tapi warna swatch beda (di sini cokelat kemerahan lebih gelap)."
@@ -330,7 +330,7 @@
     "shade": "440 Medium Deep",
     "target_season": "AUTUMN_DARK",
     "target_undertone": "Warm",
-    "target_skintone": "Deep, Dark",
+    "target_skintone": "Dark",
     "target_saturation": "High",
     "image_file": "Product 97.png",
     "notes": ""
@@ -456,8 +456,8 @@
     "shade": "Custard",
     "target_season": "SUMMER_CLEAR",
     "target_undertone": "Cool",
-    "target_skintone": "Fair, Medium",
-    "target_saturation": "Low, Medium",
+    "target_skintone": "Fair",
+    "target_saturation": "Medium",
     "image_file": "Product 148.png",
     "notes": ""
   },
@@ -470,8 +470,8 @@
     "shade": "11 Light Cool",
     "target_season": "SUMMER_CLEAR",
     "target_undertone": "Cool",
-    "target_skintone": "Fair, Medium",
-    "target_saturation": "Low, Medium",
+    "target_skintone": "Fair",
+    "target_saturation": "Medium",
     "image_file": "Product 149.png",
     "notes": "Produk dan shade sama muncul juga di kode 7 (Summer Light)."
   },
@@ -484,8 +484,8 @@
     "shade": "NC17",
     "target_season": "SUMMER_CLEAR",
     "target_undertone": "Cool",
-    "target_skintone": "Fair, Medium",
-    "target_saturation": "Low, Medium",
+    "target_skintone": "Fair",
+    "target_saturation": "Medium",
     "image_file": "Product 150.png",
     "notes": ""
   },
@@ -787,15 +787,15 @@
     "product_id": "PROD_057",
     "product_name": "Make Up For Ever Skin Blush & Glow Palette - Glow Palette",
     "brand": "Make Up For Ever",
-    "category": "eye",
-    "raw_category": "Eyeshadow",
+    "category": "blush",
+    "raw_category": "Blush",
     "shade": "Glow Palette",
     "target_season": "SPRING_CLEAR",
     "target_undertone": "Warm",
     "target_skintone": "Fair",
     "target_saturation": "High",
     "image_file": "Product 28.png",
-    "notes": "Tidak ada jenis shade. Produk ini palette blush dan highlighter krim, bukan eyeshadow. Dicatat sebagai Eyeshadow karena ada di foto eyeshadow."
+    "notes": "Koreksi kategori katalog: Blush (palette blush/highlighter), sebelumnya tercatat Eyeshadow. Koreksi deskripsi, tidak mengubah season."
   },
   {
     "product_id": "PROD_058",
@@ -806,7 +806,7 @@
     "shade": "Peach",
     "target_season": "SPRING_STRONG",
     "target_undertone": "Warm",
-    "target_skintone": "Medium, Tanned",
+    "target_skintone": "Tanned",
     "target_saturation": "High",
     "image_file": "Product 43.png",
     "notes": ""
@@ -820,7 +820,7 @@
     "shade": "08 & 09",
     "target_season": "SPRING_STRONG",
     "target_undertone": "Warm",
-    "target_skintone": "Medium, Tanned",
+    "target_skintone": "Tanned",
     "target_saturation": "High",
     "image_file": "Product 44.png",
     "notes": ""
@@ -834,7 +834,7 @@
     "shade": "Amber Pearl",
     "target_season": "SPRING_STRONG",
     "target_undertone": "Warm",
-    "target_skintone": "Medium, Tanned",
+    "target_skintone": "Tanned",
     "target_saturation": "High",
     "image_file": "Product 45.png",
     "notes": ""
@@ -848,7 +848,7 @@
     "shade": "Incandescent & Coral Sunset",
     "target_season": "SPRING_STRONG",
     "target_undertone": "Warm",
-    "target_skintone": "Medium, Tanned",
+    "target_skintone": "Tanned",
     "target_saturation": "High",
     "image_file": "Product 48.png",
     "notes": ""
@@ -857,15 +857,15 @@
     "product_id": "PROD_062",
     "product_name": "Make Over Perfect Shade Blush On Palette",
     "brand": "Make Over",
-    "category": "eye",
-    "raw_category": "Eyeshadow",
+    "category": "blush",
+    "raw_category": "Blush",
     "shade": "",
     "target_season": "SPRING_STRONG",
     "target_undertone": "Warm",
-    "target_skintone": "Medium, Tanned",
+    "target_skintone": "Tanned",
     "target_saturation": "High",
     "image_file": "Product 46.png",
-    "notes": "Tidak ada nama shade. Produk ini palette blush, bukan eyeshadow. Dicatat sebagai Eyeshadow karena ada di foto eyeshadow."
+    "notes": "Perfect Shade Blush On Palette adalah produk kategori Blush berbentuk palet tanpa nama shade individual. Nilai N/A berarti tidak berlaku, BUKAN nama shade. Tidak boleh membuat nama shade; rekomendasi tingkat produk/palet hanya jika didukung kode dan database runtime. Status aktivasi backend belum diverifikasi."
   },
   {
     "product_id": "PROD_063",
@@ -876,7 +876,7 @@
     "shade": "Royal Peach",
     "target_season": "SPRING_STRONG",
     "target_undertone": "Warm",
-    "target_skintone": "Medium, Tanned",
+    "target_skintone": "Tanned",
     "target_saturation": "High",
     "image_file": "Product 47.png",
     "notes": ""
@@ -946,7 +946,7 @@
     "shade": "Medium",
     "target_season": "AUTUMN_DEEP",
     "target_undertone": "Warm",
-    "target_skintone": "Tanned, Deep",
+    "target_skintone": "Deep",
     "target_saturation": "High",
     "image_file": "Product 80.png",
     "notes": ""
@@ -960,7 +960,7 @@
     "shade": "Mahogany",
     "target_season": "AUTUMN_DEEP",
     "target_undertone": "Warm",
-    "target_skintone": "Tanned, Deep",
+    "target_skintone": "Deep",
     "target_saturation": "High",
     "image_file": "Product 81.png",
     "notes": ""
@@ -974,7 +974,7 @@
     "shade": "Bronze",
     "target_season": "AUTUMN_DEEP",
     "target_undertone": "Warm",
-    "target_skintone": "Tanned, Deep",
+    "target_skintone": "Deep",
     "target_saturation": "High",
     "image_file": "Product 82.png",
     "notes": ""
@@ -988,7 +988,7 @@
     "shade": "Starlight & Smoky Quartz",
     "target_season": "AUTUMN_DEEP",
     "target_undertone": "Warm",
-    "target_skintone": "Tanned, Deep",
+    "target_skintone": "Deep",
     "target_saturation": "High",
     "image_file": "Product 83.png",
     "notes": ""
@@ -1002,7 +1002,7 @@
     "shade": "Tan",
     "target_season": "AUTUMN_DARK",
     "target_undertone": "Warm",
-    "target_skintone": "Deep, Dark",
+    "target_skintone": "Dark",
     "target_saturation": "High",
     "image_file": "Product 98.png",
     "notes": "Tidak ada jenis shade. Judul dan foto sama dengan kode 11 (Winter Deep)."
@@ -1016,7 +1016,7 @@
     "shade": "Starry Night & Straight Fire",
     "target_season": "AUTUMN_DARK",
     "target_undertone": "Warm",
-    "target_skintone": "Deep, Dark",
+    "target_skintone": "Dark",
     "target_saturation": "High",
     "image_file": "Product 99.png",
     "notes": ""
@@ -1030,7 +1030,7 @@
     "shade": "Mitzah",
     "target_season": "AUTUMN_DARK",
     "target_undertone": "Warm",
-    "target_skintone": "Deep, Dark",
+    "target_skintone": "Dark",
     "target_saturation": "High",
     "image_file": "Product 100.png",
     "notes": ""
@@ -1044,7 +1044,7 @@
     "shade": "Anywhere Caffeine",
     "target_season": "AUTUMN_DARK",
     "target_undertone": "Warm",
-    "target_skintone": "Deep, Dark",
+    "target_skintone": "Dark",
     "target_saturation": "High",
     "image_file": "Product 101.png",
     "notes": ""
@@ -1058,7 +1058,7 @@
     "shade": "Brick & Dark Cacao & Cafe Noir",
     "target_season": "AUTUMN_DARK",
     "target_undertone": "Warm",
-    "target_skintone": "Deep, Dark",
+    "target_skintone": "Dark",
     "target_saturation": "High",
     "image_file": "Product 102.png",
     "notes": ""
@@ -1184,8 +1184,8 @@
     "shade": "879 Rouge Trafalgar",
     "target_season": "SUMMER_CLEAR",
     "target_undertone": "Cool",
-    "target_skintone": "Fair, Medium",
-    "target_saturation": "Low, Medium",
+    "target_skintone": "Fair",
+    "target_saturation": "Medium",
     "image_file": "Product 151.png",
     "notes": ""
   },
@@ -1198,8 +1198,8 @@
     "shade": "Wired",
     "target_season": "SUMMER_CLEAR",
     "target_undertone": "Cool",
-    "target_skintone": "Fair, Medium",
-    "target_saturation": "Low, Medium",
+    "target_skintone": "Fair",
+    "target_saturation": "Medium",
     "image_file": "Product 152.png",
     "notes": ""
   },
@@ -1212,8 +1212,8 @@
     "shade": "606 Wherever Walnut",
     "target_season": "SUMMER_CLEAR",
     "target_undertone": "Cool",
-    "target_skintone": "Fair, Medium",
-    "target_saturation": "Low, Medium",
+    "target_skintone": "Fair",
+    "target_saturation": "Medium",
     "image_file": "Product 153.png",
     "notes": ""
   },
@@ -1226,8 +1226,8 @@
     "shade": "Mute Library",
     "target_season": "SUMMER_CLEAR",
     "target_undertone": "Cool",
-    "target_skintone": "Fair, Medium",
-    "target_saturation": "Low, Medium",
+    "target_skintone": "Fair",
+    "target_saturation": "Medium",
     "image_file": "Product 154.png",
     "notes": ""
   },
@@ -1240,8 +1240,8 @@
     "shade": "Rose Lens",
     "target_season": "SUMMER_CLEAR",
     "target_undertone": "Cool",
-    "target_skintone": "Fair, Medium",
-    "target_saturation": "Low, Medium",
+    "target_skintone": "Fair",
+    "target_saturation": "Medium",
     "image_file": "Product 155.png",
     "notes": ""
   },
@@ -1548,7 +1548,7 @@
     "shade": "Pink Pumpkin",
     "target_season": "SPRING_STRONG",
     "target_undertone": "Warm",
-    "target_skintone": "Medium, Tanned",
+    "target_skintone": "Tanned",
     "target_saturation": "High",
     "image_file": "Product 54.png",
     "notes": ""
@@ -1562,7 +1562,7 @@
     "shade": "Chili",
     "target_season": "SPRING_STRONG",
     "target_undertone": "Warm",
-    "target_skintone": "Medium, Tanned",
+    "target_skintone": "Tanned",
     "target_saturation": "High",
     "image_file": "Product 55.png",
     "notes": ""
@@ -1576,7 +1576,7 @@
     "shade": "Red Thrill",
     "target_season": "SPRING_STRONG",
     "target_undertone": "Warm",
-    "target_skintone": "Medium, Tanned",
+    "target_skintone": "Tanned",
     "target_saturation": "High",
     "image_file": "Product 56.png",
     "notes": "Judul sama dengan kode 6 (Autumn Dark), tapi tampilan beda: di sini bullet merah terang dan swatch coral sheer, di kode 6 bullet cokelat dan swatch pink-cokelat sheer. Mungkin shade atau foto salah."
@@ -1590,7 +1590,7 @@
     "shade": "Corvette",
     "target_season": "SPRING_STRONG",
     "target_undertone": "Warm",
-    "target_skintone": "Medium, Tanned",
+    "target_skintone": "Tanned",
     "target_saturation": "High",
     "image_file": "Product 57.png",
     "notes": "Caption tertulis 'Powerstay Waterlite'; tulisan di botol 'Powerstay Vivid Waterlite Lip Stain'."
@@ -1660,7 +1660,7 @@
     "shade": "Sweetheart",
     "target_season": "AUTUMN_DEEP",
     "target_undertone": "Warm",
-    "target_skintone": "Tanned, Deep",
+    "target_skintone": "Deep",
     "target_saturation": "High",
     "image_file": "Product 90.png",
     "notes": ""
@@ -1674,7 +1674,7 @@
     "shade": "Natural Berry",
     "target_season": "AUTUMN_DEEP",
     "target_undertone": "Warm",
-    "target_skintone": "Tanned, Deep",
+    "target_skintone": "Deep",
     "target_saturation": "High",
     "image_file": "Product 91.png",
     "notes": "Caption tidak mencantumkan nomor shade."
@@ -1688,7 +1688,7 @@
     "shade": "24 - Brick Red",
     "target_season": "AUTUMN_DEEP",
     "target_undertone": "Warm",
-    "target_skintone": "Tanned, Deep",
+    "target_skintone": "Deep",
     "target_saturation": "High",
     "image_file": "Product 92.png",
     "notes": ""
@@ -1702,7 +1702,7 @@
     "shade": "Jujube",
     "target_season": "AUTUMN_DEEP",
     "target_undertone": "Warm",
-    "target_skintone": "Tanned, Deep",
+    "target_skintone": "Deep",
     "target_saturation": "High",
     "image_file": "Product 93.png",
     "notes": ""
@@ -1716,7 +1716,7 @@
     "shade": "Rosewood Star",
     "target_season": "AUTUMN_DARK",
     "target_undertone": "Warm",
-    "target_skintone": "Deep, Dark",
+    "target_skintone": "Dark",
     "target_saturation": "High",
     "image_file": "Product 109.png",
     "notes": "Caption 'Rouge Dior On Stage' tanpa kata 'Ink' (kode 4 memakai 'Rouge Dior On Stage Ink'), bentuk produknya sama-sama lip liquid."
@@ -1730,7 +1730,7 @@
     "shade": "Caramel Swirl",
     "target_season": "AUTUMN_DARK",
     "target_undertone": "Warm",
-    "target_skintone": "Deep, Dark",
+    "target_skintone": "Dark",
     "target_saturation": "High",
     "image_file": "Product 110.png",
     "notes": "Judul sama dengan kode 3 (Spring Strong), tapi tampilan beda: di sini bullet cokelat dan swatch pink-cokelat sheer, di kode 3 bullet merah terang dan swatch coral. Mungkin shade atau foto salah."
@@ -1744,7 +1744,7 @@
     "shade": "Crème In Your Coffee",
     "target_season": "AUTUMN_DARK",
     "target_undertone": "Warm",
-    "target_skintone": "Deep, Dark",
+    "target_skintone": "Dark",
     "target_saturation": "High",
     "image_file": "Product 111.png",
     "notes": ""
@@ -1758,7 +1758,7 @@
     "shade": "37",
     "target_season": "AUTUMN_DARK",
     "target_undertone": "Warm",
-    "target_skintone": "Deep, Dark",
+    "target_skintone": "Dark",
     "target_saturation": "High",
     "image_file": "Product 112.png",
     "notes": ""
@@ -1870,8 +1870,8 @@
     "shade": "441 Rose Tea",
     "target_season": "SUMMER_CLEAR",
     "target_undertone": "Cool",
-    "target_skintone": "Fair, Medium",
-    "target_saturation": "Low, Medium",
+    "target_skintone": "Fair",
+    "target_saturation": "Medium",
     "image_file": "Product 160.png",
     "notes": ""
   },
@@ -1884,8 +1884,8 @@
     "shade": "038 Rose Nude",
     "target_season": "SUMMER_CLEAR",
     "target_undertone": "Cool",
-    "target_skintone": "Fair, Medium",
-    "target_saturation": "Low, Medium",
+    "target_skintone": "Fair",
+    "target_saturation": "Medium",
     "image_file": "Product 161.png",
     "notes": ""
   },
@@ -1898,8 +1898,8 @@
     "shade": "Juju Fig",
     "target_season": "SUMMER_CLEAR",
     "target_undertone": "Cool",
-    "target_skintone": "Fair, Medium",
-    "target_saturation": "Low, Medium",
+    "target_skintone": "Fair",
+    "target_saturation": "Medium",
     "image_file": "Product 162.png",
     "notes": "Nama shade mirip 'Joseon Fig' di kode 1 (Spring Light), tapi warna swatch beda (di sini rose gelap, di kode 1 peach-coral). Mungkin shade yang sama dengan penulisan beda, atau salah foto."
   },
@@ -1912,8 +1912,8 @@
     "shade": "Glowy",
     "target_season": "SUMMER_CLEAR",
     "target_undertone": "Cool",
-    "target_skintone": "Fair, Medium",
-    "target_saturation": "Low, Medium",
+    "target_skintone": "Fair",
+    "target_saturation": "Medium",
     "image_file": "Product 163.png",
     "notes": ""
   },
@@ -2262,7 +2262,7 @@
     "shade": "Honolulu",
     "target_season": "SPRING_STRONG",
     "target_undertone": "Warm",
-    "target_skintone": "Medium, Tanned",
+    "target_skintone": "Tanned",
     "target_saturation": "High",
     "image_file": "Product 49.png",
     "notes": ""
@@ -2276,7 +2276,7 @@
     "shade": "02 Sunset Chaser",
     "target_season": "SPRING_STRONG",
     "target_undertone": "Warm",
-    "target_skintone": "Medium, Tanned",
+    "target_skintone": "Tanned",
     "target_saturation": "High",
     "image_file": "Product 50.png",
     "notes": "Produk berupa palette 3 pan, bukan blush tunggal."
@@ -2290,7 +2290,7 @@
     "shade": "Cherry",
     "target_season": "SPRING_STRONG",
     "target_undertone": "Warm",
-    "target_skintone": "Medium, Tanned",
+    "target_skintone": "Tanned",
     "target_saturation": "High",
     "image_file": "Product 51.png",
     "notes": ""
@@ -2304,7 +2304,7 @@
     "shade": "Universal Glow",
     "target_season": "SPRING_STRONG",
     "target_undertone": "Warm",
-    "target_skintone": "Medium, Tanned",
+    "target_skintone": "Tanned",
     "target_saturation": "High",
     "image_file": "Product 53.png",
     "notes": "Produk berupa palette glow (highlighter dan blush shimmer), bukan blush tunggal."
@@ -2318,7 +2318,7 @@
     "shade": "31",
     "target_season": "SPRING_STRONG",
     "target_undertone": "Warm",
-    "target_skintone": "Medium, Tanned",
+    "target_skintone": "Tanned",
     "target_saturation": "High",
     "image_file": "Product 52.png",
     "notes": "Brand di caption tertulis 'Armany'. Ada angka '19' nyasar di dekat caption, sedangkan shade tertulis 31."
@@ -2416,7 +2416,7 @@
     "shade": "Exhibit A",
     "target_season": "AUTUMN_DEEP",
     "target_undertone": "Warm",
-    "target_skintone": "Tanned, Deep",
+    "target_skintone": "Deep",
     "target_saturation": "High",
     "image_file": "Product 84.png",
     "notes": ""
@@ -2430,7 +2430,7 @@
     "shade": "Obsession",
     "target_season": "AUTUMN_DEEP",
     "target_undertone": "Warm",
-    "target_skintone": "Tanned, Deep",
+    "target_skintone": "Deep",
     "target_saturation": "High",
     "image_file": "Product 85.png",
     "notes": ""
@@ -2444,7 +2444,7 @@
     "shade": "Saucy Style",
     "target_season": "AUTUMN_DEEP",
     "target_undertone": "Warm",
-    "target_skintone": "Tanned, Deep",
+    "target_skintone": "Deep",
     "target_saturation": "High",
     "image_file": "Product 86.png",
     "notes": ""
@@ -2458,7 +2458,7 @@
     "shade": "Mary Gold",
     "target_season": "AUTUMN_DEEP",
     "target_undertone": "Warm",
-    "target_skintone": "Tanned, Deep",
+    "target_skintone": "Deep",
     "target_saturation": "High",
     "image_file": "Product 87.png",
     "notes": ""
@@ -2472,7 +2472,7 @@
     "shade": "Promiscious Peach",
     "target_season": "AUTUMN_DEEP",
     "target_undertone": "Warm",
-    "target_skintone": "Tanned, Deep",
+    "target_skintone": "Deep",
     "target_saturation": "High",
     "image_file": "Product 88.png",
     "notes": "Ejaan 'Promiscious' sesuai caption."
@@ -2486,7 +2486,7 @@
     "shade": "Peach Passion",
     "target_season": "AUTUMN_DEEP",
     "target_undertone": "Warm",
-    "target_skintone": "Tanned, Deep",
+    "target_skintone": "Deep",
     "target_saturation": "High",
     "image_file": "Product 89.png",
     "notes": ""
@@ -2500,7 +2500,7 @@
     "shade": "On The Mauve",
     "target_season": "AUTUMN_DARK",
     "target_undertone": "Warm",
-    "target_skintone": "Deep, Dark",
+    "target_skintone": "Dark",
     "target_saturation": "High",
     "image_file": "Product 103.png",
     "notes": ""
@@ -2514,7 +2514,7 @@
     "shade": "Terra",
     "target_season": "AUTUMN_DARK",
     "target_undertone": "Warm",
-    "target_skintone": "Deep, Dark",
+    "target_skintone": "Dark",
     "target_saturation": "High",
     "image_file": "Product 104.png",
     "notes": ""
@@ -2528,7 +2528,7 @@
     "shade": "Love Struck",
     "target_season": "AUTUMN_DARK",
     "target_undertone": "Warm",
-    "target_skintone": "Deep, Dark",
+    "target_skintone": "Dark",
     "target_saturation": "High",
     "image_file": "Product 105.png",
     "notes": ""
@@ -2542,7 +2542,7 @@
     "shade": "Ruby Red",
     "target_season": "AUTUMN_DARK",
     "target_undertone": "Warm",
-    "target_skintone": "Deep, Dark",
+    "target_skintone": "Dark",
     "target_saturation": "High",
     "image_file": "Product 106.png",
     "notes": ""
@@ -2556,7 +2556,7 @@
     "shade": "Foreplay",
     "target_season": "AUTUMN_DARK",
     "target_undertone": "Warm",
-    "target_skintone": "Deep, Dark",
+    "target_skintone": "Dark",
     "target_saturation": "High",
     "image_file": "Product 107.png",
     "notes": ""
@@ -2570,7 +2570,7 @@
     "shade": "Sinful & Fierce",
     "target_season": "AUTUMN_DARK",
     "target_undertone": "Warm",
-    "target_skintone": "Deep, Dark",
+    "target_skintone": "Dark",
     "target_saturation": "High",
     "image_file": "Product 108.png",
     "notes": "Foto menampilkan dua stick. Shade 'Fierce' juga muncul di kode 12 (Winter Dark) dengan caption 'Fierce'."
@@ -2738,8 +2738,8 @@
     "shade": "475 Rose Caprice",
     "target_season": "SUMMER_CLEAR",
     "target_undertone": "Cool",
-    "target_skintone": "Fair, Medium",
-    "target_saturation": "Low, Medium",
+    "target_skintone": "Fair",
+    "target_saturation": "Medium",
     "image_file": "Product 156.png",
     "notes": "Judul dan foto sama dengan kode 7 (Summer Light)."
   },
@@ -2752,8 +2752,8 @@
     "shade": "Orgasm Fantasy",
     "target_season": "SUMMER_CLEAR",
     "target_undertone": "Cool",
-    "target_skintone": "Fair, Medium",
-    "target_saturation": "Low, Medium",
+    "target_skintone": "Fair",
+    "target_saturation": "Medium",
     "image_file": "Product 157.png",
     "notes": ""
   },
@@ -2761,13 +2761,13 @@
     "product_id": "PROD_198",
     "product_name": "Dior Beauty Dior Addict Lip Maximizer - Rosewood",
     "brand": "Dior Beauty",
-    "category": "blush",
-    "raw_category": "Blush",
+    "category": "lip",
+    "raw_category": "Lip",
     "shade": "Rosewood",
     "target_season": "SUMMER_CLEAR",
     "target_undertone": "Cool",
-    "target_skintone": "Fair, Medium",
-    "target_saturation": "Low, Medium",
+    "target_skintone": "Fair",
+    "target_saturation": "Medium",
     "image_file": "Product 158.png",
     "notes": "Foto menampilkan produk bentuk stick bening ber-cannage mirip Dior Addict Lip Glow, tidak persis 'Backstage Rosy Glow'. Nama shade tidak ada."
   },
@@ -2775,13 +2775,13 @@
     "product_id": "PROD_199",
     "product_name": "Tarte Maracuja Juicy Lip Plump - Pink",
     "brand": "Tarte",
-    "category": "blush",
-    "raw_category": "Blush",
+    "category": "lip",
+    "raw_category": "Lip",
     "shade": "Pink",
     "target_season": "SUMMER_CLEAR",
     "target_undertone": "Cool",
-    "target_skintone": "Fair, Medium",
-    "target_saturation": "Low, Medium",
+    "target_skintone": "Fair",
+    "target_saturation": "Medium",
     "image_file": "Product 159.png",
     "notes": ""
   },

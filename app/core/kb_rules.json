@@ -86,7 +86,6 @@
     "season_name": "Spring Strong",
     "undertone": "Warm",
     "target_skintone": [
-      "Medium",
       "Tanned"
     ],
     "target_saturation": [
@@ -128,7 +127,7 @@
     "season_name": "Autumn Muted",
     "undertone": "Warm",
     "target_skintone": [
-      "Medium "
+      "Medium"
     ],
     "target_saturation": [
       "Medium"
@@ -169,7 +168,6 @@
     "season_name": "Autumn Deep",
     "undertone": "Warm",
     "target_skintone": [
-      "Tanned",
       "Deep"
     ],
     "target_saturation": [
@@ -211,7 +209,6 @@
     "season_name": "Autumn Dark",
     "undertone": "Warm",
     "target_skintone": [
-      "Deep",
       "Dark"
     ],
     "target_saturation": [
@@ -335,11 +332,9 @@
     "season_name": "Summer Clear",
     "undertone": "Cool",
     "target_skintone": [
-      "Fair",
-      "Medium"
+      "Fair"
     ],
     "target_saturation": [
-      "Low",
       "Medium"
     ],
     "makeup_look": "Bright Pink & Watermelon Makeup",
