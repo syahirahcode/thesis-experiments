@@ -9,6 +9,12 @@
     "target_saturation": [
       "Low"
     ],
+    "target_combinations": [
+      [
+        "Fair",
+        "Low"
+      ]
+    ],
     "makeup_look": "Soft & Fresh Glowing Makeup",
     "look_file_name": "1_face.png",
     "eye_makeup": {
@@ -48,7 +54,18 @@
       "Fair"
     ],
     "target_saturation": [
+      "Medium",
       "High"
+    ],
+    "target_combinations": [
+      [
+        "Fair",
+        "Medium"
+      ],
+      [
+        "Fair",
+        "High"
+      ]
     ],
     "makeup_look": "Fresh & Bright Coral-Pink Makeup",
     "look_file_name": "2_face.png",
@@ -86,10 +103,21 @@
     "season_name": "Spring Strong",
     "undertone": "Warm",
     "target_skintone": [
+      "Medium",
       "Tanned"
     ],
     "target_saturation": [
       "High"
+    ],
+    "target_combinations": [
+      [
+        "Medium",
+        "High"
+      ],
+      [
+        "Tanned",
+        "High"
+      ]
     ],
     "makeup_look": "Warm Coral & Tomato-Red Makeup",
     "look_file_name": "3_face.png",
@@ -127,10 +155,26 @@
     "season_name": "Autumn Muted",
     "undertone": "Warm",
     "target_skintone": [
-      "Medium"
+      "Medium",
+      "Tanned"
     ],
     "target_saturation": [
+      "Low",
       "Medium"
+    ],
+    "target_combinations": [
+      [
+        "Medium",
+        "Low"
+      ],
+      [
+        "Medium",
+        "Medium"
+      ],
+      [
+        "Tanned",
+        "Low"
+      ]
     ],
     "makeup_look": "Soft Brown & Rosy-Nude Makeup",
     "look_file_name": "4_face.png",
@@ -168,10 +212,31 @@
     "season_name": "Autumn Deep",
     "undertone": "Warm",
     "target_skintone": [
+      "Tanned",
       "Deep"
     ],
     "target_saturation": [
+      "Low",
+      "Medium",
       "High"
+    ],
+    "target_combinations": [
+      [
+        "Tanned",
+        "Medium"
+      ],
+      [
+        "Deep",
+        "Low"
+      ],
+      [
+        "Deep",
+        "Medium"
+      ],
+      [
+        "Deep",
+        "High"
+      ]
     ],
     "makeup_look": "Neutral Brown & Peachy Nude Makeup",
     "look_file_name": "5_face.png",
@@ -212,7 +277,23 @@
       "Dark"
     ],
     "target_saturation": [
+      "Low",
+      "Medium",
       "High"
+    ],
+    "target_combinations": [
+      [
+        "Dark",
+        "Low"
+      ],
+      [
+        "Dark",
+        "Medium"
+      ],
+      [
+        "Dark",
+        "High"
+      ]
     ],
     "makeup_look": "Deep Brown Semi-Smokey Makeup",
     "look_file_name": "6_face.png",
@@ -255,6 +336,12 @@
     "target_saturation": [
       "Low"
     ],
+    "target_combinations": [
+      [
+        "Fair",
+        "Low"
+      ]
+    ],
     "makeup_look": "Soft Cool Pink & Youthful Glow Makeup",
     "look_file_name": "7_face.png",
     "eye_makeup": {
@@ -294,7 +381,18 @@
       "Medium"
     ],
     "target_saturation": [
+      "Low",
       "Medium"
+    ],
+    "target_combinations": [
+      [
+        "Medium",
+        "Low"
+      ],
+      [
+        "Medium",
+        "Medium"
+      ]
     ],
     "makeup_look": "Soft Dusty Pink & Mauve Makeup",
     "look_file_name": "8_face.png",
@@ -332,10 +430,26 @@
     "season_name": "Summer Clear",
     "undertone": "Cool",
     "target_skintone": [
-      "Fair"
+      "Fair",
+      "Medium"
     ],
     "target_saturation": [
-      "Medium"
+      "Medium",
+      "High"
+    ],
+    "target_combinations": [
+      [
+        "Fair",
+        "Medium"
+      ],
+      [
+        "Fair",
+        "High"
+      ],
+      [
+        "Medium",
+        "High"
+      ]
     ],
     "makeup_look": "Bright Pink & Watermelon Makeup",
     "look_file_name": "9_face.png",
@@ -376,7 +490,23 @@
       "Tanned"
     ],
     "target_saturation": [
+      "Low",
+      "Medium",
       "High"
+    ],
+    "target_combinations": [
+      [
+        "Tanned",
+        "Low"
+      ],
+      [
+        "Tanned",
+        "Medium"
+      ],
+      [
+        "Tanned",
+        "High"
+      ]
     ],
     "makeup_look": "Defined Cool Berry & Vibrant Makeup",
     "look_file_name": "10_face.png",
@@ -417,7 +547,23 @@
       "Deep"
     ],
     "target_saturation": [
+      "Low",
+      "Medium",
       "High"
+    ],
+    "target_combinations": [
+      [
+        "Deep",
+        "Low"
+      ],
+      [
+        "Deep",
+        "Medium"
+      ],
+      [
+        "Deep",
+        "High"
+      ]
     ],
     "makeup_look": "Rich Berry & Defined Plum Makeup",
     "look_file_name": "11_face.png",
@@ -458,7 +604,23 @@
       "Dark"
     ],
     "target_saturation": [
+      "Low",
+      "Medium",
       "High"
+    ],
+    "target_combinations": [
+      [
+        "Dark",
+        "Low"
+      ],
+      [
+        "Dark",
+        "Medium"
+      ],
+      [
+        "Dark",
+        "High"
+      ]
     ],
     "makeup_look": "Dark Jewel-Toned & Wine Makeup",
     "look_file_name": "12_face.png",

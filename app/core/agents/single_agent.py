@@ -14,6 +14,11 @@ from pydantic import ValidationError
 from app.core.agents.prompts import SINGLE_AGENT_SYSTEM
 from app.core.config import Settings, get_settings
 from app.core.image_preprocessing import preprocess_image
+from app.core.kb_matching import (
+    SeasonContractViolation,
+    merge_retry_generation,
+    reasoning_violations,
+)
 from app.core.llm_client import (
     LLMClientProtocol,
     StructuredGeneration,
@@ -195,25 +200,24 @@ class SingleAgent:
                 attributes = facial_output.attributes
                 probabilities = facial_output.probabilities
 
-            prompt = json.dumps(
-                {
-                    "visual_attributes": attributes.model_dump(mode="json"),
-                    "class_probabilities": probabilities or {},
-                    "knowledge_base": self.kb_rules,
-                    "output_schema": SingleAgentOutput.model_json_schema(),
-                    "instructions": (
-                        "In one model response, use your own reasoning to choose two "
-                        "different season codes, primary and sister, from the supplied "
-                        "knowledge base. Both are required; never return null for the sister "
-                        "season. Search for products using the supplied tool and include "
-                        "the resulting product picks in the same response. Do not calculate "
-                        "or include season scores, rankings, or percentages. Return every "
-                        "makeup color as #RRGGBB without brackets. Do not call or delegate "
-                        "to agents."
-                    ),
-                },
-                ensure_ascii=False,
-            )
+            prompt_payload = {
+                "visual_attributes": attributes.model_dump(mode="json"),
+                "class_probabilities": probabilities or {},
+                "knowledge_base": self.kb_rules,
+                "output_schema": SingleAgentOutput.model_json_schema(),
+                "instructions": (
+                    "In one model response, choose as primary the only KB season whose "
+                    "undertone and target_combinations match the supplied attributes, "
+                    "and a different sister season from the supplied knowledge base. "
+                    "Both are required; never return null for the sister season. "
+                    "Search for products using the supplied tool and include the "
+                    "resulting product picks in the same response. Do not calculate "
+                    "or include season scores, rankings, or percentages. Return every "
+                    "makeup color as #RRGGBB without brackets. Do not call or delegate "
+                    "to agents."
+                ),
+            }
+            prompt = json.dumps(prompt_payload, ensure_ascii=False)
             tools = ProductSearchTool(
                 products=self.products,
                 attributes=attributes,
@@ -226,6 +230,30 @@ class SingleAgent:
                 schema=SingleAgentOutput,
                 tools=tools,
             )
+            if generation is not None:
+                violations = reasoning_violations(
+                    generation.value.reasoning, attributes, self.kb_rules
+                )
+                if violations:
+                    prompt_payload["contract_violations"] = violations
+                    retry_generation = self.llm_client.generate_structured(
+                        system=SINGLE_AGENT_SYSTEM,
+                        prompt=json.dumps(prompt_payload, ensure_ascii=False),
+                        schema=SingleAgentOutput,
+                        tools=tools,
+                    )
+                    if retry_generation is not None:
+                        merge_retry_generation(generation, retry_generation)
+                        violations = reasoning_violations(
+                            generation.value.reasoning, attributes, self.kb_rules
+                        )
+                        if violations:
+                            raise SeasonContractViolation(
+                                "Season contract violated: " + "; ".join(violations),
+                                generation,
+                            )
+                    else:
+                        generation = None
             output = generation.value
             step = TraceStep(
                 step_index=1,
@@ -247,7 +275,9 @@ class SingleAgent:
                     output.reasoning.season_code,
                     *[pick.product_id for pick in output.products.recommendations],
                 ],
-                retries=max(generation.attempts - generation.llm_rounds, 0),
+                retries=max(generation.attempts - generation.llm_rounds, 0) + getattr(
+                    generation, "contract_retries", 0
+                ),
                 tool_calls=generation.tool_calls,
                 llm_rounds=generation.llm_rounds,
                 input_tokens=generation.input_tokens,
@@ -256,6 +286,8 @@ class SingleAgent:
         except Exception as error:
             error_message = str(error)
             failure_category = self._failure_category(error)
+            if isinstance(error, SeasonContractViolation):
+                generation = error.generation
             if isinstance(error, StructuredGenerationError):
                 generation_error = error
             step = TraceStep(
@@ -283,6 +315,7 @@ class SingleAgent:
                 ),
                 retries=(
                     max(generation.attempts - generation.llm_rounds, 0)
+                    + getattr(generation, "contract_retries", 0)
                     if generation
                     else max(
                         generation_error.attempts - generation_error.llm_rounds, 0
@@ -318,6 +351,8 @@ class SingleAgent:
                 1
                 if generation or (generation_error and generation_error.llm_rounds)
                 else 0
+            ) + (
+                getattr(generation, "contract_retries", 0) if generation else 0
             ),
             total_llm_rounds=(
                 generation.llm_rounds

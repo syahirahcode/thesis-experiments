@@ -29,6 +29,7 @@ from collections import Counter
 from pathlib import Path
 from statistics import mean, median, pstdev
 
+from app.core.kb_matching import rule_matches
 from app.schemas.analysis import (
     REQUIRED_STAGES,
     season_to_code,
@@ -156,6 +157,23 @@ def _hx(value: str) -> str:
 
 def _rule_mismatches(rule: SeasonRule, attrs: VisualAttributes) -> list[str]:
     """Daftar atribut input yang tidak memenuhi aturan season di KB (kosong = sesuai)."""
+    if rule.target_combinations:
+        if rule_matches(
+            rule,
+            attrs.undertone.value,
+            attrs.skintone.value,
+            attrs.saturation.value,
+        ):
+            return []
+        bad = []
+        if attrs.undertone.value.casefold() != rule.undertone.strip().casefold():
+            bad.append(f"undertone {attrs.undertone.value} != {rule.undertone}")
+        bad.append(
+            f"pair {attrs.skintone.value}/{attrs.saturation.value} "
+            "not in target_combinations"
+        )
+        return bad
+
     low = lambda xs: {x.strip().lower() for x in xs}  # noqa: E731
     bad: list[str] = []
     if attrs.undertone.value.lower() != rule.undertone.strip().lower():

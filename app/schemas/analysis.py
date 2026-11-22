@@ -225,6 +225,7 @@ class SeasonRule(BaseModel):
     undertone: str
     target_skintone: list[str]
     target_saturation: list[str]
+    target_combinations: list[list[str]] = Field(default_factory=list)
     makeup_look: str
     look_file_name: str
     eye_makeup: EyeMakeupGuide

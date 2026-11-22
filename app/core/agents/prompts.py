@@ -1,29 +1,31 @@
-"""Frozen shared instruction blocks for the experiment's two architectures."""
+"""Frozen shared instruction blocks for the experiment's two architectures.
+
+Versi KB v3: pencocokan season memakai target_combinations (Mapping CFY 30 kombinasi).
+"""
 
 REASONING_RULES = """\
 You perform season reasoning from visual attributes, class probabilities, and the
-knowledge base. The LLM itself must choose both a primary season and a distinct sister
-season by comparing the supplied attributes with the KB rules. Always return both season
-codes; never return null for the sister season. Do not use or
+knowledge base. Choose a primary season and a distinct sister season from the KB. Always
+return both season codes; never return null for the sister season. Do not use or
 produce calculated season scores, rankings, match percentages, or confidence percentages.
 Choose both season codes only from the KB and never choose the same code twice.
 
-Attribute priority for choosing the primary season: first skin saturation, then skin tone,
-then undertone.
-- If exactly one KB season satisfies all three attributes, choose it.
-- Otherwise, first keep only the seasons whose target_saturation contains the supplied
-  saturation. Among those, prefer seasons whose target_skintone contains the supplied skin
-  tone. Use undertone last, to choose among the seasons that remain.
-- If no season satisfies all three, relax the constraints in reverse order of priority:
-  give up undertone first, then skin tone, and never give up saturation unless no season
-  matches it at all.
+Choosing the primary season (CFY Mapping, 30 attribute combinations):
+- Every combination of undertone, skin tone, and saturation belongs to exactly one KB
+  season. A season matches only when its undertone equals the supplied undertone AND the
+  pair [supplied skin tone, supplied saturation] appears in its target_combinations.
+- Use target_combinations, not target_skintone x target_saturation. Those two lists are
+  only a summary and their cross product can include pairs that belong to another season.
+- Choose the single matching season as the primary season. Never relax, ignore, or
+  reinterpret any attribute.
 - Use class_probabilities only qualitatively, as a hint about how reliable each attribute
-  is; do not compute or output any score or percentage.
-- Choose the sister season as the closest alternative to the primary season, differing
-  first in the lowest-priority attribute that was relaxed or is least certain.
-Set is_ambiguous=true only when the evidence genuinely supports multiple plausible seasons
-(including when you had to relax a constraint), and explain the ambiguity in Indonesian,
-naming the attribute that was relaxed. Do not change the supplied attributes. Copy season
+  is; do not compute or output any score or percentage, and do not let them change the
+  primary season.
+- Choose the sister season as the closest alternative to the primary season: a KB season
+  with the same undertone whose target_combinations are nearest to the supplied skin tone
+  and saturation.
+Always set is_ambiguous=false and ambiguity_note to an empty string, because the primary
+season is determined by exactly one CFY rule. Do not change the supplied attributes. Copy season
 names, makeup look, look filename, makeup HEX values in #RRGGBB format (without brackets),
 techniques, directions, applications, and finishes exactly from the selected primary-season
 KB rule. Never invent KB values.
@@ -57,8 +59,8 @@ Produce exactly these three groups, with these exact titles and exactly these it
    - "Atribut yang dipakai": one sentence listing the supplied attributes in this order:
      saturasi, skin tone, undertone (e.g. "Saturasi Low, skin tone Fair, undertone Warm").
    - "Penetapan season": 2-3 sentences. Name the primary season and say which KB rule fields
-     (target_saturation, target_skintone, undertone) matched the attributes. If a constraint was
-     relaxed, name it. Mention the sister season in one sentence and why it is the closest alternative.
+     (undertone and the skin tone and saturation pair in target_combinations) matched the attributes.
+     Mention the sister season in one sentence and why it is the closest alternative.
 2. "Karakteristik season dan arah palet"
    - "Warna yang dipilih": 1-2 sentences describing the direction values of the primary season's
      eye, blush and lip makeup in Indonesian.

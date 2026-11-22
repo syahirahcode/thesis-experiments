@@ -11,6 +11,7 @@ from app.core.agents.facial_agent import FacialAgent
 from app.core.agents.product_agent import ProductAgent
 from app.core.agents.reasoning_agent import ReasoningAgent, build_analysis_explanation
 from app.core.config import Settings, get_settings
+from app.core.kb_matching import SeasonContractViolation
 from app.core.llm_client import StructuredGenerationError
 from app.core.product_repository import JsonProductRepository, ProductRepository
 from app.core.product_repository_pg import build_product_repository
@@ -139,7 +140,7 @@ class OrchestratorAgent:
                         retries=max(
                             reasoning_generation.attempts - reasoning_generation.llm_rounds,
                             0,
-                        ),
+                        ) + getattr(reasoning_generation, "contract_retries", 0),
                         tool_calls=reasoning_generation.tool_calls,
                         llm_rounds=reasoning_generation.llm_rounds,
                         input_tokens=reasoning_generation.input_tokens,
@@ -147,6 +148,8 @@ class OrchestratorAgent:
                     )
                 )
             except Exception as error:
+                if isinstance(error, SeasonContractViolation):
+                    reasoning_generation = error.generation
                 if isinstance(error, StructuredGenerationError):
                     reasoning_error = error
                 error_message = str(error)
@@ -162,6 +165,49 @@ class OrchestratorAgent:
                         input_summary={
                             "attributes": facial_output.attributes.model_dump(mode="json")
                         },
+                        retries=(
+                            max(
+                                reasoning_generation.attempts
+                                - reasoning_generation.llm_rounds,
+                                0,
+                            )
+                            + getattr(reasoning_generation, "contract_retries", 0)
+                            if reasoning_generation is not None
+                            else max(
+                                reasoning_error.attempts - reasoning_error.llm_rounds,
+                                0,
+                            )
+                            if reasoning_error is not None
+                            else 0
+                        ),
+                        tool_calls=(
+                            reasoning_generation.tool_calls
+                            if reasoning_generation is not None
+                            else reasoning_error.tool_calls
+                            if reasoning_error is not None
+                            else []
+                        ),
+                        llm_rounds=(
+                            reasoning_generation.llm_rounds
+                            if reasoning_generation is not None
+                            else reasoning_error.llm_rounds
+                            if reasoning_error is not None
+                            else 0
+                        ),
+                        input_tokens=(
+                            reasoning_generation.input_tokens
+                            if reasoning_generation is not None
+                            else reasoning_error.input_tokens
+                            if reasoning_error is not None
+                            else 0
+                        ),
+                        output_tokens=(
+                            reasoning_generation.output_tokens
+                            if reasoning_generation is not None
+                            else reasoning_error.output_tokens
+                            if reasoning_error is not None
+                            else 0
+                        ),
                         error_message=error_message,
                         failure_category=failure_category,
                     )
@@ -236,7 +282,13 @@ class OrchestratorAgent:
             steps=steps,
             llm_calls=int(
                 reasoning_generation is not None or reasoning_error is not None
-            ) + int(product_generation is not None or product_error is not None),
+            )
+            + (
+                getattr(reasoning_generation, "contract_retries", 0)
+                if reasoning_generation is not None
+                else 0
+            )
+            + int(product_generation is not None or product_error is not None),
             total_llm_rounds=sum(step.llm_rounds for step in steps),
             total_tool_calls=sum(len(step.tool_calls) for step in steps),
             total_input_tokens=sum(step.input_tokens for step in steps),
